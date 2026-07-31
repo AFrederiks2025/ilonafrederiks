@@ -105,8 +105,14 @@ export default function Home() {
             Met gevoel voor presentatie en een open houding creëer ik een prettige ervaring —
             voor klanten, collega’s en deelnemers.
           </p>
-          <a className="primaryLink" href="mailto:ilonafrederiks@gmail.com">
-            Maak kennis <ArrowIcon />
+          <a
+            className="primaryLink"
+            href="https://wa.me/31657177997"
+            target="_blank"
+            rel="noreferrer"
+            aria-label="WhatsApp met Ilona"
+          >
+            WhatsApp met Ilona <ArrowIcon />
           </a>
 
           <div className="introFacts" aria-label="Kerngegevens">
