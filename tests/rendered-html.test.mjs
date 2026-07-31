@@ -40,6 +40,8 @@ test("server-renders Ilona's complete portfolio page and metadata", async () => 
   assert.match(html, /Barista · vrijwilligerswerk/i);
   assert.match(html, /WhatsApp met Ilona/i);
   assert.match(html, /Beschikbaar voor een gesprek/i);
+  assert.match(html, /hero-editorial-2200\.jpg/i);
+  assert.match(html, /Styling · Verkoop · Performance/i);
   assert.match(html, /Jane Talentenrapportage/i);
   assert.doesNotMatch(html, /Your site is taking shape|Building your site/i);
 });
@@ -55,6 +57,8 @@ test("keeps interaction, accessibility and content safeguards in source", async 
 
   assert.match(page, /<main id="main-content" tabIndex=\{-1\}>/);
   assert.match(page, /alt="Portret van Ilona Frederiks"/);
+  assert.match(page, /className="heroDesktopArtwork"/);
+  assert.match(page, /className="heroMobileArtwork"/);
   assert.match(page, /loading="lazy"/);
   assert.match(page, /srcSet=/);
   assert.match(page, /Rolaccenten/);

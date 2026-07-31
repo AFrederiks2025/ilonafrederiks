@@ -260,26 +260,64 @@ export default function Home() {
 
       <main id="main-content" tabIndex={-1}>
         <section className="hero" id="profiel" aria-labelledby="hero-title">
-          <div className="heroCopy" data-reveal>
-            <p className="eyebrow">Allround professional · Zwolle</p>
-            <h1 id="hero-title">
-              Ilona <em>Frederiks</em>
-            </h1>
-            <p className="heroTagline">Stijl die zichtbaar maakt. Energie die mensen meeneemt.</p>
-            <p className="heroIntro">
-              Creatief, sociaal en gastvrij — met ervaring in styling, verkoop en performance.
-              Ilona brengt aandacht voor mensen samen met een scherp oog voor presentatie.
-            </p>
-            <div className="heroCtas">
-              <a className="primaryButton" href="#portfolio">Bekijk geselecteerd werk <ArrowIcon /></a>
-              <a
-                className="textButton"
-                href="https://wa.me/31657177997"
-                target="_blank"
-                rel="noreferrer"
-              >
-                WhatsApp met Ilona <ArrowIcon />
-              </a>
+          <h1 className="srOnly" id="hero-title">Ilona Frederiks</h1>
+
+          <div className="heroDesktopArtwork" data-reveal>
+            <img
+              src="/hero-editorial-2200.jpg"
+              srcSet="/hero-editorial-1200.jpg 1200w, /hero-editorial-2200.jpg 2200w"
+              sizes="(max-width: 1700px) calc(100vw - 5rem), 1620px"
+              alt="Ilona Frederiks — styling, verkoop en performance in Zwolle"
+              width="2200"
+              height="1157"
+              fetchPriority="high"
+            />
+          </div>
+
+          <div className="heroMobileArtwork" data-reveal>
+            <div className="heroMobileIdentity" aria-hidden="true">
+              <p className="heroMobileName"><span>Ilona</span><span>Frederiks</span></p>
+              <p className="heroMobileDisciplines">Styling · Verkoop · Performance</p>
+            </div>
+            <div className="heroMobilePortrait">
+              <img
+                src="/ilona-frederiks-640.jpg"
+                srcSet="/ilona-frederiks-640.jpg 640w, /ilona-frederiks-1000.jpg 1000w"
+                sizes="92vw"
+                alt="Portret van Ilona Frederiks"
+                width="640"
+                height="853"
+                fetchPriority="high"
+              />
+            </div>
+            <div className="heroMobileLocation" aria-hidden="true">
+              <span />
+              <p>Zwolle</p>
+              <span />
+            </div>
+          </div>
+
+          <div className="heroIntroduction" data-reveal data-reveal-delay="1">
+            <div className="heroStatement">
+              <p className="eyebrow">Allround professional · Zwolle</p>
+              <p className="heroTagline">Stijl die zichtbaar maakt. Energie die mensen meeneemt.</p>
+            </div>
+            <div className="heroStory">
+              <p className="heroIntro">
+                Creatief, sociaal en gastvrij — met ervaring in styling, verkoop en performance.
+                Ilona brengt aandacht voor mensen samen met een scherp oog voor presentatie.
+              </p>
+              <div className="heroCtas">
+                <a className="primaryButton" href="#portfolio">Bekijk portfolio <ArrowIcon /></a>
+                <a
+                  className="textButton"
+                  href="https://wa.me/31657177997"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  WhatsApp met Ilona <ArrowIcon />
+                </a>
+              </div>
             </div>
             <aside className="availability" aria-labelledby="availability-title">
               <div className="availabilityStatus">
@@ -288,29 +326,10 @@ export default function Home() {
               </div>
               <dl>
                 <div><dt>Richting</dt><dd>Styling · verkoop · presentatie</dd></div>
-                <div><dt>Uren</dt><dd>In overleg</dd></div>
-                <div><dt>Start</dt><dd>In overleg</dd></div>
+                <div><dt>Uren & start</dt><dd>In overleg</dd></div>
                 <div><dt>Regio</dt><dd>Zwolle en omgeving</dd></div>
               </dl>
             </aside>
-          </div>
-
-          <div className="heroVisual" data-reveal data-reveal-delay="1">
-            <div className="heroImageWrap">
-              <img
-                src="/ilona-frederiks.jpg"
-                alt="Portret van Ilona Frederiks"
-                width="1536"
-                height="2048"
-                srcSet="/ilona-frederiks-640.jpg 640w, /ilona-frederiks-1000.jpg 1000w, /ilona-frederiks.jpg 1536w"
-                sizes="(max-width: 820px) 100vw, 52vw"
-                fetchPriority="high"
-              />
-            </div>
-            <div className="heroCaption">
-              <span>01</span>
-              <p>People · Styling · Performance</p>
-            </div>
           </div>
         </section>
 
