@@ -726,6 +726,7 @@ footer {
 
 .portfolioItem--feature { grid-column: 1 / 8; }
 .portfolioItem--portrait { grid-column: 9 / 13; margin-top: 8rem; }
+.portfolioItem--bridal { grid-column: 1 / 6; }
 .portfolioItem--square { grid-column: 1 / 5; }
 .portfolioItem--wide { grid-column: 6 / 13; margin-top: 4rem; }
 .portfolioItem--landscape { grid-column: 2 / 7; }
@@ -744,6 +745,7 @@ footer {
 .portfolioItem--feature .portfolioImage { aspect-ratio: 5 / 6; }
 .portfolioItem--portrait .portfolioImage,
 .portfolioItem--portraitSmall .portfolioImage { aspect-ratio: 3 / 4; }
+.portfolioItem--bridal .portfolioImage { aspect-ratio: 2 / 3; }
 .portfolioItem--square .portfolioImage { aspect-ratio: 1; }
 .portfolioItem--wide .portfolioImage { aspect-ratio: 16 / 10; }
 .portfolioItem--landscape .portfolioImage { aspect-ratio: 4 / 3; }
@@ -755,7 +757,7 @@ footer {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  filter: saturate(0.85) contrast(0.98);
+  filter: saturate(0.94) contrast(0.99);
   transition: filter 500ms ease, transform 700ms var(--ease);
 }
 

@@ -1,5 +1,5 @@
 import assert from "node:assert/strict";
-import { readFile } from "node:fs/promises";
+import { readFile, readdir } from "node:fs/promises";
 import test from "node:test";
 
 async function render() {
@@ -21,6 +21,28 @@ async function render() {
       passThroughOnException() {},
     },
   );
+}
+
+function readJpegSize(buffer) {
+  assert.equal(buffer.readUInt16BE(0), 0xffd8, "portfolio-afbeelding moet een jpeg zijn");
+  let offset = 2;
+
+  while (offset + 9 < buffer.length) {
+    if (buffer[offset] !== 0xff) {
+      offset += 1;
+      continue;
+    }
+
+    const marker = buffer[offset + 1];
+    if (marker === 0xd9 || marker === 0xda) break;
+    const length = buffer.readUInt16BE(offset + 2);
+    if ([0xc0, 0xc1, 0xc2, 0xc3, 0xc5, 0xc6, 0xc7, 0xc9, 0xca, 0xcb, 0xcd, 0xce, 0xcf].includes(marker)) {
+      return { height: buffer.readUInt16BE(offset + 5), width: buffer.readUInt16BE(offset + 7) };
+    }
+    offset += 2 + length;
+  }
+
+  throw new Error("Geen jpeg-afmetingen gevonden");
 }
 
 test("server-renders Ilona's complete portfolio page and metadata", async () => {
@@ -46,10 +68,23 @@ test("server-renders Ilona's complete portfolio page and metadata", async () => 
   assert.match(html, /24–32 uur per week/i);
   assert.match(html, /Approach of Life/i);
   assert.match(html, /href="https:\/\/www\.approachoflife\.nl\/"/i);
+  assert.match(html, /Bruidskapsel Bootcamp/i);
+  assert.match(html, /Baron Academy · 3-daagse/i);
+  assert.match(html, /Make-up Artist/i);
+  assert.match(html, /Hairstylist/i);
+  assert.match(html, /JDO Academy/i);
   assert.match(html, /ilona-visagist-portret\.jpg/i);
-  assert.match(html, /ilona-be-you-tiful\.jpg/i);
-  assert.match(html, /2(?:<!--.*?-->)?\s*beelden/i);
+  assert.match(html, /editorial-colour-look\.jpg/i);
+  assert.match(html, /editorial-colour-look-480\.jpg/i);
+  assert.match(html, /forest-bridal-look\.jpg/i);
+  assert.match(html, /forest-bridal-look-480\.jpg/i);
+  assert.match(html, /quiet-bridal-moment\.jpg/i);
+  assert.match(html, /quiet-bridal-moment-480\.jpg/i);
+  assert.match(html, /4(?:<!--.*?-->)?\s*beelden/i);
+  assert.match(html, /Warm &amp; polished/i);
+  assert.doesNotMatch(html, /Soft glamour/i);
   assert.match(html, /Alleen het zichtbare\s+eindresultaat staat centraal/i);
+  assert.doesNotMatch(html, /ilona-be-you-tiful\.jpg/i);
   assert.doesNotMatch(html, /be-you-tiful-logo|bruidsaccessoires|haarstyling-tools|mobile-beauty-kit/i);
   assert.doesNotMatch(html, /kleurpaletten|lip-edit|eye-detail-kit|finishing-details/i);
   assert.match(html, /hero-editorial-2200\.jpg/i);
@@ -83,8 +118,15 @@ test("keeps interaction, accessibility and content safeguards in source", async 
   assert.match(page, /<summary>/);
   assert.match(page, /loading="lazy"/);
   assert.match(page, /srcSet=/);
+  assert.match(page, /Warm & polished/);
+  assert.doesNotMatch(page, /Soft glamour/);
+  assert.doesNotMatch(page, /ilona-be-you-tiful\.jpg/);
   assert.match(page, /24–32 uur per week/);
   assert.match(page, /Approach of Life/);
+  assert.match(page, /Bruidskapsel Bootcamp/);
+  assert.match(page, /Make-up Artist/);
+  assert.match(page, /Hairstylist/);
+  assert.doesNotMatch(page, /IMG_0126|IMG_0127|IMG_0128/i);
   assert.match(page, /Rolaccenten/);
   assert.match(page, /download cv als pdf/i);
   assert.doesNotMatch(page, /Portfolio volgt|socialPlaceholder/i);
@@ -101,4 +143,29 @@ test("keeps interaction, accessibility and content safeguards in source", async 
   const pdf = await readFile(new URL("../public/Ilona-Frederiks-CV.pdf", import.meta.url));
   assert.equal(pdf.subarray(0, 5).toString("ascii"), "%PDF-");
   assert.ok(pdf.byteLength > 100_000, "De downloadbare cv-pdf moet een volledig document zijn");
+});
+
+test("ships optimized, metadata-clean portfolio variants", async () => {
+  const assets = [
+    ["ilona-visagist-portret.jpg", 1107, 1400],
+    ["ilona-visagist-portret-480.jpg", 480, 607],
+    ["editorial-colour-look.jpg", 933, 1400],
+    ["editorial-colour-look-480.jpg", 480, 720],
+    ["forest-bridal-look.jpg", 933, 1400],
+    ["forest-bridal-look-480.jpg", 480, 719],
+    ["quiet-bridal-moment.jpg", 1400, 932],
+    ["quiet-bridal-moment-480.jpg", 480, 320],
+  ];
+
+  const portfolioFiles = (await readdir(new URL("../public/portfolio/", import.meta.url)))
+    .filter((name) => name.endsWith(".jpg"))
+    .sort();
+  assert.deepEqual(portfolioFiles, assets.map(([name]) => name).sort(), "alleen gebruikte eindresultaten worden gepubliceerd");
+
+  for (const [name, width, height] of assets) {
+    const image = await readFile(new URL(`../public/portfolio/${name}`, import.meta.url));
+    assert.deepEqual(readJpegSize(image), { width, height }, `${name} heeft de juiste afmetingen`);
+    const contents = image.toString("latin1");
+    assert.doesNotMatch(contents, /DateTimeOriginal|SerialNumber|LensSerialNumber/i);
+  }
 });
