@@ -750,6 +750,15 @@ footer {
 .portfolioItem--featureWide .portfolioImage { aspect-ratio: 16 / 9; }
 .portfolioItem--wideEnd .portfolioImage { aspect-ratio: 3 / 2; }
 
+.portfolioItem.brandTile .portfolioImage {
+  background: var(--paper);
+}
+
+.portfolioItem.brandTile img {
+  padding: clamp(2rem, 5vw, 5rem);
+  object-fit: contain;
+}
+
 .portfolioImage img {
   display: block;
   width: 100%;
@@ -1126,6 +1135,28 @@ footer {
   line-height: 1;
 }
 
+.educationList h3 a {
+  display: inline-flex;
+  gap: 0.45rem;
+  align-items: baseline;
+  transition: color 200ms ease;
+}
+
+.educationList h3 a span {
+  color: var(--champagne-dark);
+  font-family: var(--sans);
+  font-size: 0.7em;
+  transition: transform 200ms ease;
+}
+
+.educationList h3 a:hover {
+  color: var(--wine);
+}
+
+.educationList h3 a:hover span {
+  transform: translate(2px, -2px);
+}
+
 .educationList p {
   margin: 0;
   color: var(--muted);
@@ -1359,7 +1390,7 @@ footer {
   }
 
   .heroIntroduction .availability dl {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(4, minmax(0, 1fr));
   }
 
   .portfolioSection,
@@ -1429,6 +1460,10 @@ footer {
 
   .heroIntroduction .availability {
     grid-column: auto;
+  }
+
+  .heroIntroduction .availability dl {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .portfolioSection,

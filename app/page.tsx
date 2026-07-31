@@ -2,36 +2,57 @@
 import MobileMenu from "./MobileMenu";
 import RevealEffects from "./RevealEffects";
 
-const portfolio = [
+type PortfolioItem = {
+  image: string;
+  alt: string;
+  category: string;
+  title: string;
+  caption: string;
+  layout: string;
+  modifier?: string;
+  width: number;
+  height: number;
+};
+
+type EducationItem = {
+  period: string;
+  dateTime: string;
+  title: string;
+  detail: string;
+  url?: string;
+};
+
+const portfolio: PortfolioItem[] = [
   {
-    image: "/portfolio/atelier-haarstyling.jpg",
-    alt: "Professionele haarstylingplek met oefenhoofd en verlichte spiegels",
-    category: "Atelier",
-    title: "Haarstylingstation",
-    caption: "Een rustige, professionele opstelling voor voorbereiding en techniek.",
+    image: "/portfolio/ilona-visagist-portret.jpg",
+    alt: "Ilona Frederiks houdt een grote make-upkwast naast haar gezicht tegen een lichte achtergrond",
+    category: "Portret",
+    title: "In haar element",
+    caption: "Ilona in de wereld van visagie, styling en persoonlijke presentatie.",
     layout: "feature",
-    width: 900,
-    height: 1200,
+    width: 1107,
+    height: 1400,
   },
   {
-    image: "/portfolio/beauty-station.jpg",
-    alt: "Visagietafel met twee verlichte spiegels en hoge stoelen",
-    category: "Visagie",
-    title: "Beauty station",
-    caption: "Licht, rust en spiegeling als basis voor precies werk.",
+    image: "/portfolio/ilona-be-you-tiful.jpg",
+    alt: "Ilona Frederiks staat met meerdere make-upkwasten en een gevulde kwastenriem tegen een lichte achtergrond",
+    category: "Be-You-tiful",
+    title: "Vakvrouw in beeld",
+    caption: "Professionele tools, aandacht voor detail en een persoonlijke benadering.",
     layout: "portrait",
-    width: 900,
-    height: 1200,
+    width: 683,
+    height: 1024,
   },
   {
-    image: "/portfolio/complexion-kit.jpg",
-    alt: "Geordende collectie foundations en make-up bij een spiegel",
-    category: "Complexion",
-    title: "Tone & texture",
-    caption: "Foundations en finishes zorgvuldig geordend per look.",
+    image: "/portfolio/be-you-tiful-logo.png",
+    alt: "Be-You-tiful-logo met de letters BF in een vierkant",
+    category: "Eigen onderneming",
+    title: "Be-You-tiful",
+    caption: "Ilona’s onderneming in bruidsmake-up, haarstyling en visagie van 2020 tot 2023.",
     layout: "square",
-    width: 900,
-    height: 1200,
+    modifier: "brandTile",
+    width: 500,
+    height: 500,
   },
   {
     image: "/portfolio/bruidsaccessoires.jpg",
@@ -207,7 +228,14 @@ const talentQuotes = [
   },
 ];
 
-const education = [
+const education: EducationItem[] = [
+  {
+    period: "2021",
+    dateTime: "2021",
+    title: "Approach of Life",
+    detail: "Aanvullende opleiding",
+    url: "https://www.approachoflife.nl/",
+  },
   { period: "2013 — 2016", dateTime: "2013", title: "Song & Dance · MBO 4", detail: "Zang, dans en acteren" },
   { period: "2012 — 2013", dateTime: "2012", title: "HQ", detail: "Tussenjaar voor creativiteit" },
   { period: "2008 — 2012", dateTime: "2008", title: "VMBO", detail: "Handel en verkoop" },
@@ -326,7 +354,8 @@ export default function Home() {
               </div>
               <dl>
                 <div><dt>Richting</dt><dd>Styling · verkoop · presentatie</dd></div>
-                <div><dt>Uren & start</dt><dd>In overleg</dd></div>
+                <div><dt>Beschikbaarheid</dt><dd>24–32 uur per week</dd></div>
+                <div><dt>Start</dt><dd>In overleg</dd></div>
                 <div><dt>Regio</dt><dd>Zwolle en omgeving</dd></div>
               </dl>
             </aside>
@@ -341,8 +370,8 @@ export default function Home() {
               <h2 id="portfolio-title">Het oog wil ook wat.</h2>
             </div>
             <p className="sectionIntro">
-              Een visuele selectie uit Ilona&apos;s beauty-achtergrond: studio, tools en details
-              die laten zien hoeveel aandacht er in een verzorgde look zit.
+              Een visuele selectie uit Ilona&apos;s beauty-achtergrond: eigen beeld, merk,
+              studio, tools en details die haar aandacht voor presentatie zichtbaar maken.
             </p>
           </div>
 
@@ -359,7 +388,7 @@ export default function Home() {
             <div className="portfolioGrid">
               {portfolio.map((item, index) => (
                 <figure
-                  className={`portfolioItem portfolioItem--${item.layout}`}
+                  className={`portfolioItem portfolioItem--${item.layout}${item.modifier ? ` ${item.modifier}` : ""}`}
                   key={item.image}
                   data-reveal
                   data-reveal-delay={String(index % 3)}
@@ -370,7 +399,9 @@ export default function Home() {
                       alt={item.alt}
                       width={item.width}
                       height={item.height}
-                      srcSet={`${item.image.replace(".jpg", "-480.jpg")} 480w, ${item.image} ${item.width}w`}
+                      srcSet={item.image.endsWith(".jpg")
+                        ? `${item.image.replace(".jpg", "-480.jpg")} 480w, ${item.image} ${item.width}w`
+                        : undefined}
                       sizes="(max-width: 680px) 92vw, (max-width: 1000px) 48vw, 42vw"
                       loading="lazy"
                       decoding="async"
@@ -488,7 +519,13 @@ export default function Home() {
             {education.map((item) => (
               <article key={item.title} data-reveal>
                 <time dateTime={item.dateTime}>{item.period}</time>
-                <h3>{item.title}</h3>
+                <h3>
+                  {item.url ? (
+                    <a href={item.url} target="_blank" rel="noreferrer">
+                      {item.title} <span aria-hidden="true">↗</span>
+                    </a>
+                  ) : item.title}
+                </h3>
                 <p>{item.detail}</p>
               </article>
             ))}
