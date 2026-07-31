@@ -3,9 +3,10 @@
 import { useEffect, useRef, useState } from "react";
 
 const menuItems = [
-  { href: "#profiel", label: "Profiel" },
+  { href: "#profieltekst", label: "Profiel" },
+  { href: "#portfolio", label: "Portfolio" },
   { href: "#ervaring", label: "Ervaring" },
-  { href: "#werkwijze", label: "Werkwijze" },
+  { href: "#talenten", label: "Talenten" },
   { href: "#opleiding", label: "Opleiding" },
   { href: "#contact", label: "Contact" },
 ];
