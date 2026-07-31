@@ -142,7 +142,7 @@ main {
 
 .hero {
   display: grid;
-  grid-template-columns: minmax(0, 1.08fr) minmax(28rem, 0.92fr);
+  grid-template-columns: minmax(28rem, 0.92fr) minmax(0, 1.08fr);
   width: min(100% - 5rem, 1440px);
   min-height: 50rem;
   margin: 0 auto;
@@ -151,10 +151,12 @@ main {
 .portraitColumn {
   position: relative;
   display: flex;
+  order: 2;
+  justify-content: flex-end;
   align-items: center;
   min-width: 0;
-  padding: 4.5rem 4.5rem 4.5rem 1.75rem;
-  border-right: 1px solid var(--line);
+  padding: 4.5rem 1.75rem 4.5rem 4.5rem;
+  border-left: 1px solid var(--line);
 }
 
 .portraitFrame {
@@ -165,7 +167,7 @@ main {
 
 .portraitFrame::before {
   position: absolute;
-  inset: 1.75rem -1.75rem -1.75rem 1.75rem;
+  inset: 1.75rem 1.75rem -1.75rem -1.75rem;
   border: 1px solid var(--dust);
   content: "";
 }
@@ -188,8 +190,9 @@ main {
 
 .namePlate {
   position: absolute;
-  right: 1.5rem;
+  right: auto;
   bottom: 4.2rem;
+  left: 1.5rem;
   width: min(31rem, 78%);
   padding: 2rem 2.2rem 2.35rem;
   background: rgba(251, 248, 242, 0.95);
@@ -224,8 +227,9 @@ main {
 
 .folio {
   position: absolute;
-  right: 1.5rem;
+  right: auto;
   top: 50%;
+  left: 1.5rem;
   color: var(--wine);
   font-family: var(--serif);
   font-size: 1.05rem;
@@ -235,10 +239,11 @@ main {
 
 .introColumn {
   display: flex;
+  order: 1;
   flex-direction: column;
   justify-content: center;
   min-width: 0;
-  padding: 6.5rem 1.5rem 5rem 6rem;
+  padding: 6.5rem 6rem 5rem 1.5rem;
 }
 
 .intro {
@@ -620,19 +625,20 @@ main {
 
 @media (max-width: 1050px) {
   .hero {
-    grid-template-columns: 1fr 0.9fr;
+    grid-template-columns: 0.9fr 1fr;
   }
 
   .portraitColumn {
-    padding-right: 3.5rem;
-  }
-
-  .introColumn {
     padding-left: 3.5rem;
   }
 
+  .introColumn {
+    padding-right: 3.5rem;
+  }
+
   .namePlate {
-    right: 1rem;
+    right: auto;
+    left: 1rem;
     width: 82%;
   }
 
@@ -659,8 +665,11 @@ main {
   }
 
   .portraitColumn {
+    order: 1;
+    justify-content: flex-start;
     min-height: 43rem;
     padding: 3rem 2.5rem 4rem 0;
+    border-left: 0;
     border-right: 0;
   }
 
@@ -668,16 +677,23 @@ main {
     width: min(100% - 1.5rem, 29rem);
   }
 
+  .portraitFrame::before {
+    inset: 1.75rem -1.75rem -1.75rem 1.75rem;
+  }
+
   .namePlate {
     right: 0;
     bottom: 2rem;
+    left: auto;
   }
 
   .folio {
     right: 0;
+    left: auto;
   }
 
   .introColumn {
+    order: 2;
     padding: 4rem 0 6rem;
     border-top: 1px solid var(--line);
   }
@@ -738,6 +754,7 @@ main {
 
   .portraitColumn {
     min-height: 35rem;
+    padding-left: 0;
     padding-right: 1.4rem;
   }
 
