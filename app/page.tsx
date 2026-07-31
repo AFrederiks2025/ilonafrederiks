@@ -44,12 +44,30 @@ const education = [
   },
 ];
 
-const qualities = [
-  "Etaleertalent",
-  "Ondernemerschap",
-  "Volharding",
-  "Klantgericht",
-  "Creatief",
+const workStyle = [
+  {
+    title: "Zichtbaar maken",
+    description:
+      "Ik presenteer mensen, ideeën en producten verzorgd en aantrekkelijk, met oog voor detail.",
+  },
+  {
+    title: "Helder maken",
+    description:
+      "Ik vertaal een bedoeling naar eenvoudige, praktische stappen zodat iedereen weet waar hij of zij aan toe is.",
+  },
+  {
+    title: "Vooruitbrengen",
+    description:
+      "Ik zie mogelijkheden, houd vast aan wat goed werkt en geef nieuwe ideeën een praktische plek.",
+  },
+];
+
+const strengthLabels = [
+  "Sterk in presentatie",
+  "Kansen zien",
+  "Kwaliteit vasthouden",
+  "Helder uitleggen",
+  "Open voor vernieuwing",
 ];
 
 function ArrowIcon() {
@@ -67,6 +85,7 @@ export default function Home() {
         </a>
         <nav aria-label="Secties">
           <a href="#ervaring">Ervaring</a>
+          <a href="#werkwijze">Werkwijze</a>
           <a href="#opleiding">Opleiding</a>
           <a href="#contact">Contact</a>
         </nav>
@@ -102,8 +121,9 @@ export default function Home() {
             styling, verkoop, gastvrijheid en dans samen.
           </p>
           <p className="supportingCopy">
-            Met gevoel voor presentatie en een open houding creëer ik een prettige ervaring —
-            voor klanten, collega’s en deelnemers.
+            Ik maak mensen, ideeën en producten graag zichtbaar op een aantrekkelijke manier.
+            Daarbij zie ik kansen, vertaal ik plannen naar heldere stappen en houd ik vast aan een
+            aanpak die kwaliteit oplevert.
           </p>
           <a
             className="primaryLink"
@@ -154,16 +174,31 @@ export default function Home() {
         </ol>
       </section>
 
-      <section className="qualities" aria-labelledby="qualities-title">
-        <div>
-          <p className="eyebrow">Persoonlijkheid</p>
-          <h2 id="qualities-title">Wat ik meebreng</h2>
+      <section className="qualities" id="werkwijze" aria-labelledby="work-style-title">
+        <div className="qualitiesIntro">
+          <p className="eyebrow">Kernkwaliteiten</p>
+          <h2 id="work-style-title">Zo werk ik.</h2>
+          <p>
+            Een natuurlijke combinatie van presentatie, discipline, kansen zien, helderheid en een
+            open blik op vernieuwing.
+          </p>
         </div>
-        <ul>
-          {qualities.map((quality) => (
-            <li key={quality}>{quality}</li>
-          ))}
-        </ul>
+        <div className="workStyleContent">
+          <div className="workStyleGrid">
+            {workStyle.map((item, index) => (
+              <article key={item.title}>
+                <span>{String(index + 1).padStart(2, "0")}</span>
+                <h3>{item.title}</h3>
+                <p>{item.description}</p>
+              </article>
+            ))}
+          </div>
+          <ul className="strengthLabels" aria-label="Sterke punten">
+            {strengthLabels.map((label) => (
+              <li key={label}>{label}</li>
+            ))}
+          </ul>
+        </div>
       </section>
 
       <section className="section educationSection" id="opleiding" aria-labelledby="education-title">
