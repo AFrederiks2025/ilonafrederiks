@@ -135,20 +135,6 @@ const experience = [
     tags: ["Bruidsstyling", "Visagie", "Ondernemerschap"],
   },
   {
-    period: "2016 — 2020",
-    dateTime: "2016",
-    company: "Dansworkshops op scholen",
-    role: "Dansdocent",
-    location: "Regio Zwolle",
-    summary: "Beweging, plezier en expressie toegankelijk maken voor groepen.",
-    responsibilities: [
-      "Dansworkshops voorbereiden en begeleiden op scholen.",
-      "Groepen activeren met duidelijke, haalbare bewegingsstappen.",
-      "Ruimte creëren voor plezier, performance en eigen expressie.",
-    ],
-    tags: ["Performance", "Uitleg", "Groepsenergie"],
-  },
-  {
     period: "2018 — 2019",
     dateTime: "2018",
     company: "Sissy-Boy",
@@ -175,6 +161,20 @@ const experience = [
       "Aandacht houden voor gast, team en sfeer.",
     ],
     tags: ["Gastvrijheid", "Tempo", "Contact"],
+  },
+  {
+    period: "2016 — 2020",
+    dateTime: "2016",
+    company: "Dansworkshops op scholen",
+    role: "Dansdocent",
+    location: "Regio Zwolle",
+    summary: "Beweging, plezier en expressie toegankelijk maken voor groepen.",
+    responsibilities: [
+      "Dansworkshops voorbereiden en begeleiden op scholen.",
+      "Groepen activeren met duidelijke, haalbare bewegingsstappen.",
+      "Ruimte creëren voor plezier, performance en eigen expressie.",
+    ],
+    tags: ["Performance", "Uitleg", "Groepsenergie"],
   },
   {
     period: "2011 — 2016",
@@ -458,7 +458,11 @@ export default function Home() {
           <div className="quotesHeading" data-reveal>
             <p className="eyebrow">Professioneel profiel</p>
             <h2 id="quotes-title">Wat haar werk typeert.</h2>
-            <p>Drie krachtlijnen uit de Jane Talentenrapportage van 2026.</p>
+            <p>
+              Drie krachtlijnen uit de Jane Talentenrapportage van 2026. Jane® is een
+              geregistreerd advies- en trainingsproduct dat motivatiepatronen en potentiële
+              vaardigheden in kaart brengt.
+            </p>
           </div>
           <div className="quoteGrid">
             {talentQuotes.map((item, index) => (
@@ -504,9 +508,6 @@ export default function Home() {
             >
               <span>LinkedIn</span><strong>Professioneel profiel</strong><ArrowIcon />
             </a>
-            <div className="socialPlaceholder" aria-label="Instagram-profiel wordt later toegevoegd">
-              <span>Instagram</span><strong>Portfolio volgt</strong><i>—</i>
-            </div>
           </div>
         </section>
 
@@ -515,14 +516,19 @@ export default function Home() {
             <p className="eyebrow eyebrowLight">Contact</p>
             <h2 id="contact-title">Samen iets zichtbaar maken?</h2>
             <p>Ilona maakt graag kennis voor een passende functie of creatieve samenwerking.</p>
-            <a
-              className="contactCta"
-              href="https://wa.me/31657177997"
-              target="_blank"
-              rel="noreferrer"
-            >
-              WhatsApp met Ilona <ArrowIcon />
-            </a>
+            <div className="contactActions">
+              <a
+                className="contactCta"
+                href="https://wa.me/31657177997"
+                target="_blank"
+                rel="noreferrer"
+              >
+                WhatsApp met Ilona <ArrowIcon />
+              </a>
+              <a className="contactCta contactCtaSecondary" href="/Ilona-Frederiks-CV.pdf" download>
+                Download cv als pdf <span aria-hidden="true">↓</span>
+              </a>
+            </div>
           </div>
           <address>
             <a href="mailto:ilonafrederiks@gmail.com">

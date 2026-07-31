@@ -1148,8 +1148,7 @@ footer {
   border-top: 1px solid var(--line);
 }
 
-.socialLinks > a,
-.socialPlaceholder {
+.socialLinks > a {
   display: grid;
   grid-template-columns: 8rem 1fr auto;
   gap: 1rem;
@@ -1173,8 +1172,7 @@ footer {
   font-weight: 400;
 }
 
-.socialLinks a > span:last-child,
-.socialPlaceholder i {
+.socialLinks a > span:last-child {
   color: var(--wine);
   font-size: 1.2rem;
   font-style: normal;
@@ -1183,10 +1181,6 @@ footer {
 
 .socialLinks a:hover > span:last-child {
   transform: translate(3px, -3px);
-}
-
-.socialPlaceholder {
-  color: #625651;
 }
 
 .contact {
@@ -1220,13 +1214,18 @@ footer {
   line-height: 1.7;
 }
 
+.contactActions {
+  display: grid;
+  grid-column: 2;
+  gap: 0.75rem;
+  margin-top: 1.2rem;
+}
+
 .contactCta {
   display: inline-flex;
-  grid-column: 2;
   justify-content: space-between;
   align-items: center;
   gap: 2rem;
-  margin-top: 1.2rem;
   padding: 1rem 1.15rem;
   border: 1px solid #d6bc92;
   color: #f4dfbd;
@@ -1239,6 +1238,17 @@ footer {
 
 .contactCta:hover {
   background: #d6bc92;
+  color: var(--wine-dark);
+}
+
+.contactCtaSecondary {
+  border-color: rgba(252, 249, 244, 0.36);
+  color: var(--paper);
+}
+
+.contactCtaSecondary:hover {
+  border-color: var(--paper);
+  background: var(--paper);
   color: var(--wine-dark);
 }
 
@@ -1535,7 +1545,7 @@ footer {
   .contactTop .eyebrow,
   .contactTop h2,
   .contactTop > p:nth-of-type(2),
-  .contactCta {
+  .contactActions {
     grid-column: 1;
     grid-row: auto;
   }
@@ -1544,8 +1554,9 @@ footer {
     margin-top: 1rem;
   }
 
-  .contactCta {
+  .contactActions {
     justify-self: start;
+    width: min(100%, 24rem);
   }
 
   .contact address {
@@ -1819,8 +1830,7 @@ footer {
     grid-row: auto;
   }
 
-  .socialLinks > a,
-  .socialPlaceholder {
+  .socialLinks > a {
     grid-template-columns: 1fr auto;
     gap: 0.5rem 1rem;
   }

@@ -46,6 +46,14 @@ test("server-renders Ilona's complete portfolio page and metadata", async () => 
   assert.match(html, /hero-editorial-2200\.jpg/i);
   assert.match(html, /Styling · Verkoop · Performance/i);
   assert.match(html, /Jane Talentenrapportage/i);
+  assert.match(html, /geregistreerd advies- en trainingsproduct/i);
+  assert.match(html, /href="\/Ilona-Frederiks-CV\.pdf"[^>]*download/i);
+  assert.doesNotMatch(html, /Portfolio volgt|Instagram-profiel wordt later toegevoegd/i);
+
+  const sissyBoyPosition = html.indexOf("Sissy-Boy");
+  const danceTeacherPosition = html.indexOf("Dansworkshops op scholen");
+  assert.ok(sissyBoyPosition > -1 && danceTeacherPosition > -1);
+  assert.ok(sissyBoyPosition < danceTeacherPosition, "Sissy-Boy moet voor Dansdocent staan");
   assert.doesNotMatch(html, /Your site is taking shape|Building your site/i);
 });
 
@@ -67,6 +75,8 @@ test("keeps interaction, accessibility and content safeguards in source", async 
   assert.match(page, /loading="lazy"/);
   assert.match(page, /srcSet=/);
   assert.match(page, /Rolaccenten/);
+  assert.match(page, /download cv als pdf/i);
+  assert.doesNotMatch(page, /Portfolio volgt|socialPlaceholder/i);
   assert.doesNotMatch(page, /klant zegt|testimonial|★★★★★/i);
   assert.match(layout, /metadataBase: new URL\("https:\/\/www\.ilonafrederiks\.nl"\)/);
   assert.match(menu, /aria-expanded=\{isOpen\}/);
