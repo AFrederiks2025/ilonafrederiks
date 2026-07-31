@@ -806,6 +806,7 @@ footer {
 }
 
 .portfolioItem h3 {
+  min-width: 0;
   margin: 0;
   font-family: var(--serif);
   font-size: clamp(1.65rem, 2.5vw, 2.75rem);
@@ -820,6 +821,18 @@ footer {
   font-size: 0.82rem;
   line-height: 1.55;
   text-align: right;
+}
+
+.portfolioItem--portrait figcaption,
+.portfolioItem--bridal figcaption {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.portfolioItem--portrait figcaption > span,
+.portfolioItem--bridal figcaption > span {
+  grid-column: 1;
+  max-width: 26rem;
+  text-align: left;
 }
 
 .profileSection {
@@ -1817,6 +1830,16 @@ footer {
 
   .portfolioItem h3 {
     font-size: 2rem;
+  }
+
+  .portfolioItem figcaption {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .portfolioItem figcaption > span {
+    grid-column: 1;
+    max-width: none;
+    text-align: left;
   }
 
   .profilePillars li {

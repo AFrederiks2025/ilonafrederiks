@@ -148,6 +148,7 @@ test("keeps interaction, accessibility and content safeguards in source", async 
   assert.match(effects, /IntersectionObserver/);
   assert.match(css, /scroll-behavior:\s*smooth/);
   assert.match(css, /:focus-visible/);
+  assert.match(css, /\.portfolioItem--portrait figcaption,[\s\S]*?grid-template-columns:\s*minmax\(0,\s*1fr\)/);
   assert.match(css, /@media\s*\(prefers-reduced-motion:\s*reduce\)/);
 
   const pdf = await readFile(new URL("../public/Ilona-Frederiks-CV.pdf", import.meta.url));
