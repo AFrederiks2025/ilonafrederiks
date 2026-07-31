@@ -2,6 +2,11 @@ import MobileMenu from "./MobileMenu";
 
 const experience = [
   {
+    period: "2024–heden",
+    role: "Vonk in Kampen",
+    description: "Barista (vrijwilligerswerk).",
+  },
+  {
     period: "2020–2023",
     role: "Be-you-tiful",
     description: "Eigen onderneming in bruidsstyling, haar en visagie.",
@@ -159,7 +164,7 @@ export default function Home() {
             <h2 id="experience-title">Werkervaring</h2>
           </div>
           <p className="sectionLead">
-            Van ondernemerschap en styling tot verkoop, hospitality en onderwijs.
+            Van vrijwilligerswerk en ondernemerschap tot styling, verkoop, hospitality en onderwijs.
           </p>
         </div>
 
