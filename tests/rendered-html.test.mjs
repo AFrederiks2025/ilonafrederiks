@@ -70,9 +70,11 @@ test("server-renders Ilona's complete portfolio page and metadata", async () => 
   assert.match(html, /href="https:\/\/www\.approachoflife\.nl\/"/i);
   assert.match(html, /Bruidskapsel Bootcamp/i);
   assert.match(html, /Baron Academy · 3-daagse/i);
+  assert.match(html, /datetime="2022-09-27"[^>]*>27 sep\. 2022</i);
   assert.match(html, /Make-up Artist/i);
   assert.match(html, /Hairstylist/i);
   assert.match(html, /JDO Academy/i);
+  assert.match(html, /datetime="2020-08-31"[^>]*>31 aug\. 2020</i);
   assert.match(html, /ilona-visagist-portret\.jpg/i);
   assert.match(html, /editorial-colour-look\.jpg/i);
   assert.match(html, /editorial-colour-look-480\.jpg/i);
@@ -98,6 +100,14 @@ test("server-renders Ilona's complete portfolio page and metadata", async () => 
   const danceTeacherPosition = html.indexOf("Dansworkshops op scholen");
   assert.ok(sissyBoyPosition > -1 && danceTeacherPosition > -1);
   assert.ok(sissyBoyPosition < danceTeacherPosition, "Sissy-Boy moet voor Dansdocent staan");
+
+  const bootcampPosition = html.indexOf("Bruidskapsel Bootcamp");
+  const approachPosition = html.indexOf("Approach of Life");
+  const makeUpPosition = html.indexOf("Make-up Artist");
+  const hairstylistPosition = html.indexOf("Hairstylist");
+  assert.ok(bootcampPosition < approachPosition, "2022 moet voor 2021 staan");
+  assert.ok(approachPosition < makeUpPosition, "2021 moet voor 2020 staan");
+  assert.ok(makeUpPosition < hairstylistPosition, "opleidingen met dezelfde datum volgen de certificaatvolgorde");
   assert.doesNotMatch(html, /Your site is taking shape|Building your site/i);
 });
 
@@ -161,6 +171,9 @@ test("ships optimized, metadata-clean portfolio variants", async () => {
     .filter((name) => name.endsWith(".jpg"))
     .sort();
   assert.deepEqual(portfolioFiles, assets.map(([name]) => name).sort(), "alleen gebruikte eindresultaten worden gepubliceerd");
+
+  const publicFiles = await readdir(new URL("../public/", import.meta.url), { recursive: true });
+  assert.doesNotMatch(publicFiles.join("\n"), /IMG_0126|IMG_0127|IMG_0128|\.heic$/im);
 
   for (const [name, width, height] of assets) {
     const image = await readFile(new URL(`../public/portfolio/${name}`, import.meta.url));
