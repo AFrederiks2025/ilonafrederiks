@@ -1,3 +1,5 @@
+import MobileMenu from "./MobileMenu";
+
 const experience = [
   {
     period: "2020–2023",
@@ -83,12 +85,13 @@ export default function Home() {
           <span className="wordmarkDot" aria-hidden="true" />
           <span>Zwolle</span>
         </a>
-        <nav aria-label="Secties">
+        <nav className="desktopNav" aria-label="Secties">
           <a href="#ervaring">Ervaring</a>
           <a href="#werkwijze">Werkwijze</a>
           <a href="#opleiding">Opleiding</a>
           <a href="#contact">Contact</a>
         </nav>
+        <MobileMenu />
         <a className="monogram" href="#profiel" aria-label="Terug naar boven">
           IF
         </a>
