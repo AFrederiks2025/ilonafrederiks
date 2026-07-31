@@ -346,37 +346,48 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="portfolioGrid">
-            {portfolio.map((item, index) => (
-              <figure
-                className={`portfolioItem portfolioItem--${item.layout}`}
-                key={item.image}
-                data-reveal
-                data-reveal-delay={String(index % 3)}
-              >
-                <div className="portfolioImage">
-                  <img
-                    src={item.image}
-                    alt={item.alt}
-                    width={item.width}
-                    height={item.height}
-                    srcSet={`${item.image.replace(".jpg", "-480.jpg")} 480w, ${item.image} ${item.width}w`}
-                    sizes="(max-width: 680px) 92vw, (max-width: 1000px) 48vw, 42vw"
-                    loading="lazy"
-                    decoding="async"
-                  />
-                  <span className="portfolioNumber" aria-hidden="true">
-                    {String(index + 1).padStart(2, "0")}
-                  </span>
-                </div>
-                <figcaption>
-                  <p>{item.category}</p>
-                  <h3>{item.title}</h3>
-                  <span>{item.caption}</span>
-                </figcaption>
-              </figure>
-            ))}
-          </div>
+          <details className="portfolioDisclosure">
+            <summary>
+              <span className="portfolioToggleLabel">
+                <span className="portfolioToggleClosed">Bekijk beauty archive</span>
+                <span className="portfolioToggleOpen">Sluit beauty archive</span>
+                <small>{portfolio.length} beelden</small>
+              </span>
+              <span className="portfolioToggleIcon" aria-hidden="true" />
+            </summary>
+
+            <div className="portfolioGrid">
+              {portfolio.map((item, index) => (
+                <figure
+                  className={`portfolioItem portfolioItem--${item.layout}`}
+                  key={item.image}
+                  data-reveal
+                  data-reveal-delay={String(index % 3)}
+                >
+                  <div className="portfolioImage">
+                    <img
+                      src={item.image}
+                      alt={item.alt}
+                      width={item.width}
+                      height={item.height}
+                      srcSet={`${item.image.replace(".jpg", "-480.jpg")} 480w, ${item.image} ${item.width}w`}
+                      sizes="(max-width: 680px) 92vw, (max-width: 1000px) 48vw, 42vw"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                    <span className="portfolioNumber" aria-hidden="true">
+                      {String(index + 1).padStart(2, "0")}
+                    </span>
+                  </div>
+                  <figcaption>
+                    <p>{item.category}</p>
+                    <h3>{item.title}</h3>
+                    <span>{item.caption}</span>
+                  </figcaption>
+                </figure>
+              ))}
+            </div>
+          </details>
         </section>
 
         <section className="profileSection" id="profieltekst" aria-labelledby="profile-title">

@@ -35,6 +35,9 @@ test("server-renders Ilona's complete portfolio page and metadata", async () => 
   assert.match(html, /rel="canonical"[^>]*href="https:\/\/www\.ilonafrederiks\.nl\/"/i);
   assert.match(html, /id="portfolio"/i);
   assert.match(html, /Beauty archive/i);
+  assert.match(html, /<details class="portfolioDisclosure">/i);
+  assert.match(html, /Bekijk beauty archive/i);
+  assert.doesNotMatch(html, /<details class="portfolioDisclosure"[^>]*\bopen\b/i);
   assert.match(html, /2024\s*—\s*heden/i);
   assert.match(html, /Vonk in Kampen/i);
   assert.match(html, /Barista · vrijwilligerswerk/i);
@@ -59,6 +62,8 @@ test("keeps interaction, accessibility and content safeguards in source", async 
   assert.match(page, /alt="Portret van Ilona Frederiks"/);
   assert.match(page, /className="heroDesktopArtwork"/);
   assert.match(page, /className="heroMobileArtwork"/);
+  assert.match(page, /<details className="portfolioDisclosure">/);
+  assert.match(page, /<summary>/);
   assert.match(page, /loading="lazy"/);
   assert.match(page, /srcSet=/);
   assert.match(page, /Rolaccenten/);

@@ -585,6 +585,132 @@ footer {
   line-height: 1.75;
 }
 
+.portfolioDisclosure {
+  margin-top: clamp(2rem, 3.5vw, 3.5rem);
+  border-top: 1px solid var(--line);
+}
+
+.portfolioDisclosure summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  min-height: 6.5rem;
+  padding: 1.3rem 0;
+  border-bottom: 1px solid var(--line);
+  color: var(--wine-dark);
+  cursor: pointer;
+  list-style: none;
+}
+
+.portfolioDisclosure summary::-webkit-details-marker {
+  display: none;
+}
+
+.portfolioDisclosure summary:focus-visible {
+  outline: 3px solid #d8bd84;
+  outline-offset: 5px;
+  box-shadow: 0 0 0 2px var(--wine-dark);
+}
+
+.portfolioToggleLabel {
+  display: grid;
+  grid-template-columns: auto auto;
+  gap: 0.3rem 1rem;
+  align-items: baseline;
+}
+
+.portfolioToggleLabel > span {
+  font-family: var(--serif);
+  font-size: clamp(1.45rem, 2.3vw, 2.25rem);
+  letter-spacing: -0.025em;
+}
+
+.portfolioToggleLabel small {
+  color: var(--champagne-dark);
+  font-size: 0.64rem;
+  font-weight: 750;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+.portfolioToggleOpen {
+  display: none;
+}
+
+.portfolioToggleIcon {
+  position: relative;
+  display: block;
+  width: 3.25rem;
+  height: 3.25rem;
+  flex: 0 0 auto;
+  border: 1px solid var(--wine);
+  border-radius: 50%;
+  transition: background-color 220ms ease, transform 320ms var(--ease);
+}
+
+.portfolioToggleIcon::before,
+.portfolioToggleIcon::after {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 1rem;
+  height: 1px;
+  background: var(--wine);
+  content: "";
+  transform: translate(-50%, -50%);
+  transition: background-color 220ms ease, transform 320ms var(--ease);
+}
+
+.portfolioToggleIcon::after {
+  transform: translate(-50%, -50%) rotate(90deg);
+}
+
+.portfolioDisclosure summary:hover .portfolioToggleIcon {
+  background: var(--wine);
+  transform: scale(1.04);
+}
+
+.portfolioDisclosure summary:hover .portfolioToggleIcon::before,
+.portfolioDisclosure summary:hover .portfolioToggleIcon::after,
+.portfolioDisclosure[open] .portfolioToggleIcon::before,
+.portfolioDisclosure[open] .portfolioToggleIcon::after {
+  background: var(--paper);
+}
+
+.portfolioDisclosure[open] .portfolioToggleClosed {
+  display: none;
+}
+
+.portfolioDisclosure[open] .portfolioToggleOpen {
+  display: inline;
+}
+
+.portfolioDisclosure[open] .portfolioToggleIcon {
+  background: var(--wine);
+  transform: rotate(180deg);
+}
+
+.portfolioDisclosure[open] .portfolioToggleIcon::after {
+  transform: translate(-50%, -50%);
+}
+
+.portfolioDisclosure[open] .portfolioGrid {
+  animation: archiveReveal 520ms var(--ease) both;
+}
+
+@keyframes archiveReveal {
+  from {
+    opacity: 0;
+    transform: translateY(0.75rem);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .portfolioGrid {
   display: grid;
   grid-template-columns: repeat(12, minmax(0, 1fr));
@@ -1579,6 +1705,21 @@ footer {
 
   .heroIntroduction .availability dl {
     grid-template-columns: 1fr;
+  }
+
+  .portfolioDisclosure summary {
+    gap: 1rem;
+    min-height: 5.75rem;
+  }
+
+  .portfolioToggleLabel {
+    grid-template-columns: 1fr;
+    gap: 0.35rem;
+  }
+
+  .portfolioToggleIcon {
+    width: 2.85rem;
+    height: 2.85rem;
   }
 
   .editorialHeading {
