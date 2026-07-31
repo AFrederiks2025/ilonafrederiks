@@ -351,10 +351,12 @@ footer {
 
 .heroDesktopArtwork {
   position: relative;
-  display: block;
+  display: grid;
+  grid-template-columns: minmax(0, 1.08fr) minmax(23rem, 0.92fr);
+  min-height: clamp(35rem, 52.6vw, 53.25rem);
   overflow: hidden;
   border: 1px solid rgba(109, 82, 46, 0.42);
-  background: #eee5d8;
+  background: #f4ede3;
   box-shadow: 0 1.8rem 5rem rgba(72, 23, 35, 0.08);
 }
 
@@ -366,10 +368,102 @@ footer {
   pointer-events: none;
 }
 
-.heroDesktopArtwork img {
+.heroDesktopIdentity {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  min-width: 0;
+  padding: clamp(4rem, 7vw, 7.5rem) clamp(3rem, 6vw, 7rem) clamp(3rem, 5vw, 5.5rem);
+  flex-direction: column;
+  justify-content: center;
+  background:
+    radial-gradient(circle at 18% 18%, rgba(178, 147, 100, 0.13), transparent 18rem),
+    linear-gradient(105deg, #f8f2e9 0%, #f6efe5 84%, #eee2d6 100%);
+}
+
+.heroDesktopIdentity::after {
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  right: -5rem;
+  bottom: 0;
+  width: 8rem;
+  background: linear-gradient(90deg, #eee2d6 0%, rgba(238, 226, 214, 0));
+  content: "";
+  pointer-events: none;
+}
+
+.heroDesktopName {
+  margin: 0;
+  color: var(--wine-dark);
+  font-family: var(--serif);
+  font-size: clamp(4.8rem, 8.8vw, 9.6rem);
+  font-weight: 400;
+  letter-spacing: -0.075em;
+  line-height: 0.72;
+}
+
+.heroDesktopName span {
+  display: block;
+}
+
+.heroDesktopDisciplines {
+  max-width: 45rem;
+  margin: clamp(2.25rem, 3.4vw, 3.8rem) 0 0 0.4rem;
+  color: var(--champagne-dark);
+  font-size: clamp(0.7rem, 1.12vw, 1.12rem);
+  font-weight: 650;
+  letter-spacing: 0.16em;
+  line-height: 1.65;
+  text-transform: uppercase;
+}
+
+.heroDesktopLocation {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 1rem;
+  align-items: center;
+  width: min(100%, 34rem);
+  margin: auto 0 0 0.4rem;
+  color: var(--wine);
+}
+
+.heroDesktopLocation span {
+  height: 1px;
+  background: var(--champagne);
+}
+
+.heroDesktopLocation p {
+  margin: 0;
+  font-family: var(--serif);
+  font-size: clamp(1rem, 1.5vw, 1.55rem);
+  letter-spacing: 0.05em;
+}
+
+.heroDesktopPortrait {
+  position: relative;
+  min-width: 0;
+  overflow: hidden;
+  background: #cabeb4;
+}
+
+.heroDesktopPortrait::after {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(90deg, rgba(238, 226, 214, 0.22), transparent 18%),
+    linear-gradient(180deg, transparent 72%, rgba(72, 23, 35, 0.1));
+  content: "";
+  pointer-events: none;
+}
+
+.heroDesktopPortrait img {
   display: block;
   width: 100%;
-  height: auto;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 38%;
+  filter: saturate(0.9) contrast(0.98);
 }
 
 .heroMobileArtwork {
@@ -408,6 +502,23 @@ footer {
   color: var(--muted);
   font-size: 0.98rem;
   line-height: 1.75;
+}
+
+.heroIntroSecondary {
+  max-width: 34rem;
+  margin: 1rem 0 0;
+  color: var(--muted);
+  font-size: 0.98rem;
+  line-height: 1.75;
+}
+
+.heroAvailabilityLine {
+  max-width: 34rem;
+  margin: 1.25rem 0 0;
+  color: var(--wine);
+  font-family: var(--serif);
+  font-size: 1.15rem;
+  line-height: 1.4;
 }
 
 .heroCtas {
@@ -569,7 +680,9 @@ footer {
 .socialSection h2,
 .contact h2,
 .quotesHeading h2,
-.profileSection h2 {
+.profileSection h2,
+.practiceSection h2,
+.ambitionSection h2 {
   margin: 0.5rem 0 0;
   font-family: var(--serif);
   font-size: clamp(3.5rem, 6vw, 7rem);
@@ -862,15 +975,24 @@ footer {
   line-height: 1.03;
 }
 
-.profileCopy > p:nth-child(2) {
+.profileCopy > p:not(.profileLead):not(.profilePillarsLabel) {
   max-width: 40rem;
-  margin: 0;
+  margin: 0 0 1rem;
   color: rgba(252, 249, 244, 0.7);
   line-height: 1.8;
 }
 
+.profilePillarsLabel {
+  margin: 3.5rem 0 0;
+  color: #d6bc92;
+  font-size: 0.68rem;
+  font-weight: 750;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
 .profilePillars {
-  margin: 4rem 0 0;
+  margin: 1rem 0 0;
   padding: 0;
   border-top: 1px solid var(--line-light);
   list-style: none;
@@ -902,6 +1024,153 @@ footer {
   color: rgba(252, 249, 244, 0.62);
   font-size: 0.88rem;
   line-height: 1.6;
+}
+
+.practiceSection {
+  display: grid;
+  grid-template-columns: minmax(20rem, 0.78fr) minmax(0, 1.22fr);
+  gap: clamp(4rem, 10vw, 11rem);
+  align-items: start;
+  padding: clamp(7rem, 10vw, 11rem) max(2.5rem, calc((100% - 1440px) / 2));
+  border-bottom: 1px solid var(--line);
+  background: #eadfd4;
+}
+
+.practiceHeading h2 {
+  max-width: 9ch;
+}
+
+.practiceCopy > p {
+  max-width: 42rem;
+  margin: 0 0 1rem;
+  color: #5d504a;
+  line-height: 1.8;
+}
+
+.practiceCopy blockquote {
+  margin: clamp(3rem, 5vw, 5rem) 0 0;
+  padding: clamp(2rem, 4vw, 4rem) 0 0;
+  border-top: 1px solid var(--champagne);
+}
+
+.practiceCopy blockquote p {
+  max-width: 15ch;
+  margin: 0;
+  color: var(--wine-dark);
+  font-family: var(--serif);
+  font-size: clamp(2.2rem, 4.5vw, 5rem);
+  letter-spacing: -0.045em;
+  line-height: 1.02;
+}
+
+.practiceCopy blockquote footer {
+  margin-top: 1.5rem;
+  color: var(--champagne-dark);
+  font-size: 0.68rem;
+  font-style: normal;
+  font-weight: 750;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+.ambitionSection {
+  display: grid;
+  grid-template-columns: minmax(0, 0.85fr) minmax(24rem, 1.15fr);
+  gap: clamp(4rem, 9vw, 10rem);
+  align-items: start;
+  padding: clamp(7rem, 10vw, 11rem) max(2.5rem, calc((100% - 1440px) / 2));
+  background: var(--wine-dark);
+  color: var(--paper);
+}
+
+.ambitionStory h2 {
+  max-width: 9ch;
+  color: var(--paper);
+}
+
+.ambitionLead {
+  max-width: 34rem;
+  margin: 2.5rem 0 1rem;
+  font-family: var(--serif);
+  font-size: clamp(1.8rem, 3vw, 3.3rem);
+  letter-spacing: -0.035em;
+  line-height: 1.08;
+}
+
+.ambitionStory > p:not(.eyebrow):not(.ambitionLead) {
+  max-width: 38rem;
+  margin: 0;
+  color: rgba(252, 249, 244, 0.7);
+  line-height: 1.8;
+}
+
+.personalNote {
+  max-width: 38rem;
+  margin-top: 4rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--line-light);
+}
+
+.personalNote h3 {
+  margin: 0.7rem 0 1rem;
+  font-family: var(--serif);
+  font-size: clamp(2rem, 3.2vw, 3.5rem);
+  font-weight: 400;
+  letter-spacing: -0.04em;
+  line-height: 1;
+}
+
+.personalNote > p:last-child {
+  color: rgba(252, 249, 244, 0.66);
+}
+
+.availabilityPanel {
+  padding: clamp(2rem, 4vw, 4rem);
+  background: var(--paper);
+  color: var(--ink);
+  box-shadow: 0 2rem 5rem rgba(20, 4, 8, 0.16);
+}
+
+.availabilityPanel h3 {
+  max-width: 12ch;
+  margin: 0.8rem 0 3rem;
+  color: var(--wine-dark);
+  font-family: var(--serif);
+  font-size: clamp(2.2rem, 4vw, 4.5rem);
+  font-weight: 400;
+  letter-spacing: -0.05em;
+  line-height: 0.98;
+}
+
+.availabilityPanel dl {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin: 0;
+  border-top: 1px solid var(--line);
+  border-left: 1px solid var(--line);
+}
+
+.availabilityPanel dl > div {
+  min-width: 0;
+  padding: 1.25rem;
+  border-right: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.availabilityPanel dt {
+  color: var(--champagne-dark);
+  font-size: 0.62rem;
+  font-weight: 750;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+}
+
+.availabilityPanel dd {
+  margin: 0.65rem 0 0;
+  color: #4f423d;
+  font-family: var(--serif);
+  font-size: 1.1rem;
+  line-height: 1.35;
 }
 
 .experienceList {
@@ -1396,7 +1665,7 @@ footer {
   }
 
   .heroIntroduction .availability dl {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
   .portfolioSection,
@@ -1412,6 +1681,8 @@ footer {
   }
 
   .profileSection,
+  .practiceSection,
+  .ambitionSection,
   .quotesSection,
   .contact {
     padding-inline: 1.5rem;
@@ -1456,6 +1727,30 @@ footer {
 
   .hero {
     width: min(100% - 2.5rem, 46rem);
+  }
+
+  .heroDesktopArtwork {
+    grid-template-columns: minmax(0, 1fr) minmax(18rem, 0.86fr);
+    min-height: 34rem;
+  }
+
+  .heroDesktopIdentity {
+    padding: 3rem 2.2rem;
+  }
+
+  .heroDesktopName {
+    font-size: clamp(4.5rem, 10.5vw, 6rem);
+  }
+
+  .heroDesktopDisciplines {
+    margin-top: 2rem;
+    font-size: 0.68rem;
+    letter-spacing: 0.12em;
+  }
+
+  .heroDesktopLocation {
+    gap: 0.7rem;
+    margin-left: 0;
   }
 
   .heroIntroduction {
@@ -1531,6 +1826,18 @@ footer {
 
   .profileSection h2 {
     max-width: 10ch;
+  }
+
+  .practiceSection,
+  .ambitionSection {
+    grid-template-columns: 1fr;
+    gap: 4rem;
+    padding: 7rem max(1.25rem, calc((100% - 46rem) / 2));
+  }
+
+  .practiceHeading h2,
+  .ambitionStory h2 {
+    max-width: 11ch;
   }
 
   .experienceItem {
@@ -1667,8 +1974,14 @@ footer {
     margin: 1.6rem 0 0 0.35rem;
     color: var(--champagne-dark);
     font-size: clamp(0.61rem, 2.6vw, 0.78rem);
-    letter-spacing: 0.2em;
+    max-width: 17rem;
+    letter-spacing: 0.12em;
+    line-height: 1.55;
     text-transform: uppercase;
+  }
+
+  .heroMobileDisciplines span {
+    display: block;
   }
 
   .heroMobilePortrait {
@@ -1789,8 +2102,18 @@ footer {
   .socialSection h2,
   .contact h2,
   .quotesHeading h2,
-  .profileSection h2 {
+  .profileSection h2,
+  .practiceSection h2,
+  .ambitionSection h2 {
     font-size: clamp(3.2rem, 16vw, 5rem);
+  }
+
+  .availabilityPanel {
+    padding: 1.5rem;
+  }
+
+  .availabilityPanel dl {
+    grid-template-columns: 1fr;
   }
 
   .portfolioGrid {

@@ -99,11 +99,11 @@ const experience = [
     company: "Sissy-Boy",
     role: "Verkoopmedewerker",
     location: "Zwolle",
-    summary: "Persoonlijke service en presentatie op de winkelvloer.",
+    summary: "Modeverkoop, persoonlijk klantadvies en een verzorgde winkelpresentatie.",
     responsibilities: [
-      "Klanten adviseren bij producten, stijl en combinaties.",
-      "Verkoop en service met aandacht voor de individuele klant.",
-      "Bijdragen aan een verzorgde presentatie van de collectie.",
+      "Klanten tactvol adviseren bij kleding, stijl en combinaties.",
+      "Commerciële doelen verbinden aan oprechte persoonlijke aandacht.",
+      "Bijdragen aan een nette en uitnodigende presentatie van de collectie.",
     ],
     tags: ["Retail", "Styling", "Klantadvies"],
   },
@@ -143,8 +143,8 @@ const experience = [
     location: "Zwolle",
     summary: "Modeverkoop en klantadvies met gevoel voor persoonlijke stijl.",
     responsibilities: [
-      "Klanten adviseren bij kledingkeuzes en combinaties.",
-      "Verkoopkansen herkennen vanuit oprechte aandacht.",
+      "Klanten rustig en tactvol adviseren, ook bij onzekerheid over pasvorm of figuur.",
+      "Combinaties zoeken waarin een klant zich mooi, zelfverzekerd en prettig voelt.",
       "Bijdragen aan een uitnodigende, verzorgde winkelpresentatie.",
     ],
     tags: ["Mode", "Verkoop", "Presentatie"],
@@ -208,7 +208,7 @@ export default function Home() {
     name: "Ilona Frederiks",
     url: "https://www.ilonafrederiks.nl/",
     homeLocation: { "@type": "Place", name: "Zwolle, Nederland" },
-    jobTitle: "Allround professional in styling, verkoop en performance",
+    jobTitle: "Verkoopmedewerker mode, klantadvies en styling",
     sameAs: ["https://nl.linkedin.com/in/ilona-frederiks-666b63353"],
   };
 
@@ -222,9 +222,10 @@ export default function Home() {
           <span className="brandText">Ilona Frederiks</span>
         </a>
         <nav className="desktopNav" aria-label="Secties">
-          <a href="#portfolio">Portfolio</a>
           <a href="#profieltekst">Profiel</a>
           <a href="#ervaring">Ervaring</a>
+          <a href="#beschikbaarheid">Beschikbaarheid</a>
+          <a href="#portfolio">Portfolio</a>
           <a href="#talenten">Talenten</a>
           <a href="#contact">Contact</a>
         </nav>
@@ -247,21 +248,31 @@ export default function Home() {
           <h1 className="srOnly" id="hero-title">Ilona Frederiks</h1>
 
           <div className="heroDesktopArtwork" data-reveal>
-            <img
-              src="/hero-editorial-2200.jpg"
-              srcSet="/hero-editorial-1200.jpg 1200w, /hero-editorial-2200.jpg 2200w"
-              sizes="(max-width: 1700px) calc(100vw - 5rem), 1620px"
-              alt="Ilona Frederiks — styling, verkoop en performance in Zwolle"
-              width="2200"
-              height="1157"
-              fetchPriority="high"
-            />
+            <div className="heroDesktopIdentity">
+              <p className="heroDesktopName"><span>Ilona</span><span>Frederiks</span></p>
+              <p className="heroDesktopDisciplines">Verkoopmedewerker mode · Klantadvies · Styling</p>
+              <div className="heroDesktopLocation"><span /><p>Zwolle</p><span /></div>
+            </div>
+            <div className="heroDesktopPortrait">
+              <img
+                src="/ilona-frederiks-1000.jpg"
+                srcSet="/ilona-frederiks-640.jpg 640w, /ilona-frederiks-1000.jpg 1000w"
+                sizes="(max-width: 1120px) 45vw, 720px"
+                alt="Portret van Ilona Frederiks"
+                width="1000"
+                height="1333"
+                fetchPriority="high"
+              />
+            </div>
           </div>
 
           <div className="heroMobileArtwork" data-reveal>
             <div className="heroMobileIdentity" aria-hidden="true">
               <p className="heroMobileName"><span>Ilona</span><span>Frederiks</span></p>
-              <p className="heroMobileDisciplines">Styling · Verkoop · Performance</p>
+              <p className="heroMobileDisciplines">
+                <span>Verkoopmedewerker mode</span>
+                <span>Klantadvies · Styling</span>
+              </p>
             </div>
             <div className="heroMobilePortrait">
               <img
@@ -283,44 +294,210 @@ export default function Home() {
 
           <div className="heroIntroduction" data-reveal data-reveal-delay="1">
             <div className="heroStatement">
-              <p className="eyebrow">Allround professional · Zwolle</p>
-              <p className="heroTagline">Stijl die zichtbaar maakt. Energie die mensen meeneemt.</p>
+              <p className="eyebrow">Verkoopmedewerker mode · klantadvies · styling</p>
+              <p className="heroTagline">Mode verkopen begint met iemand echt zien.</p>
             </div>
             <div className="heroStory">
               <p className="heroIntro">
-                Creatief, sociaal en gastvrij — met ervaring in styling, verkoop en performance.
-                Ilona brengt aandacht voor mensen samen met een scherp oog voor presentatie.
+                Ik ben Ilona: een enthousiaste en gastvrije verkoopmedewerker met ervaring bij
+                Shoeby, Sissy-Boy en binnen mijn eigen onderneming. Ik help klanten graag bij het
+                vinden van kleding waarin zij zich mooi, zelfverzekerd en prettig voelen.
               </p>
+              <p className="heroIntroSecondary">
+                Met mijn gevoel voor mode, styling en persoonlijk contact zorg ik voor oprechte
+                aandacht én een verzorgde winkelervaring.
+              </p>
+              <p className="heroAvailabilityLine">Beschikbaar voor 16–24 uur per week in Zwolle en omgeving.</p>
               <div className="heroCtas">
-                <a className="primaryButton" href="#portfolio">Bekijk portfolio <ArrowIcon /></a>
+                <a className="primaryButton" href="#ervaring">Bekijk mijn ervaring <ArrowIcon /></a>
                 <a
                   className="textButton"
                   href="https://wa.me/31657177997"
                   target="_blank"
                   rel="noreferrer"
                 >
-                  WhatsApp met Ilona <ArrowIcon />
+                  Maak kennis met Ilona <ArrowIcon />
                 </a>
               </div>
             </div>
             <aside className="availability" aria-labelledby="availability-title">
               <div className="availabilityStatus">
                 <span aria-hidden="true" />
-                <p id="availability-title">Beschikbaar voor een gesprek</p>
+                <p id="availability-title">Beschikbaar vanaf 17 augustus 2026</p>
               </div>
               <dl>
-                <div><dt>Richting</dt><dd>Styling · verkoop · presentatie</dd></div>
-                <div><dt>Beschikbaarheid</dt><dd>24–32 uur per week</dd></div>
-                <div><dt>Start</dt><dd>In overleg</dd></div>
-                <div><dt>Regio</dt><dd>Zwolle en omgeving</dd></div>
+                <div><dt>Functie</dt><dd>Verkoopmedewerker in een kledingwinkel</dd></div>
+                <div><dt>Uren</dt><dd>16–24 uur per week</dd></div>
+                <div><dt>Dagen</dt><dd>Maandag · dinsdag · donderdag</dd></div>
+                <div><dt>Start</dt><dd><time dateTime="2026-08-17">17 augustus 2026</time></dd></div>
+                <div><dt>Regio</dt><dd>Zwolle · maximaal circa 30 minuten reizen</dd></div>
+                <div><dt>Dienstverband</dt><dd>Vaste baan</dd></div>
               </dl>
             </aside>
           </div>
         </section>
 
-        <section className="portfolioSection" id="portfolio" aria-labelledby="portfolio-title">
+        <section className="profileSection" id="profieltekst" aria-labelledby="profile-title">
+          <div className="profileStatement" data-reveal>
+            <p className="eyebrow eyebrowLight">Profiel</p>
+            <h2 id="profile-title">Persoonlijke aandacht met gevoel voor stijl</h2>
+          </div>
+          <div className="profileCopy" data-reveal data-reveal-delay="1">
+            <p className="profileLead">
+              Ik ben een echt mensenmens. Ik krijg energie van mode, klantcontact en een winkel
+              waarin mensen zich welkom voelen.
+            </p>
+            <p>
+              Voor mij begint goed verkopen met luisteren. Ik wil begrijpen wat een klant zoekt,
+              maar ook aanvoelen waar iemand onzeker over is. Met tactvol en eerlijk advies help
+              ik klanten kleding te vinden die bij hun persoonlijkheid en figuur past.
+            </p>
+            <p>
+              Ik werk graag in een klein en persoonlijk team waarin collega’s elkaar kennen en
+              samen verantwoordelijkheid nemen. Enthousiasme, gastvrijheid en betrouwbaarheid zijn
+              eigenschappen die ik iedere werkdag meebreng.
+            </p>
+            <p className="profilePillarsLabel">Wat Ilona meebrengt</p>
+            <ul className="profilePillars" aria-label="Wat Ilona meebrengt">
+              <li><span>01</span><strong>Persoonlijk klantadvies</strong><p>Ilona neemt de tijd om klanten te leren kennen. Ze kijkt verder dan alleen de kledingmaat en zoekt naar combinaties waarin iemand zich echt prettig voelt.</p></li>
+              <li><span>02</span><strong>Verkoopgevoel</strong><p>Door haar ervaring bij Shoeby en Sissy-Boy weet Ilona hoe belangrijk verkoopdoelen zijn. Ze combineert commercieel denken met oprechte aandacht.</p></li>
+              <li><span>03</span><strong>Styling en presentatie</strong><p>Ilona is dagelijks bezig met kleding, trends en combinaties. Ze houdt van een verzorgde winkel en ziet snel wat netter, aantrekkelijker of overzichtelijker kan.</p></li>
+              <li><span>04</span><strong>Positieve teamenergie</strong><p>Ilona is enthousiast, spontaan en verbindend. Ze vindt het belangrijk dat collega’s elkaar kennen, ondersteunen en samen voor een goede sfeer zorgen.</p></li>
+            </ul>
+          </div>
+        </section>
+
+        <section className="practiceSection" id="praktijk" aria-labelledby="practice-title">
+          <div className="practiceHeading" data-reveal>
+            <p className="eyebrow">Uit de winkelpraktijk</p>
+            <h2 id="practice-title">Wanneer een klant weer gaat stralen</h2>
+          </div>
+          <div className="practiceCopy" data-reveal data-reveal-delay="1">
+            <p>
+              Bij Shoeby hielp Ilona regelmatig klanten die onzeker waren over hun uiterlijk of
+              figuur. Ze sprak die onzekerheid niet zomaar tegen, maar luisterde en zocht rustig
+              naar kleding die de sterke kanten van de klant benadrukte.
+            </p>
+            <p>
+              Door een andere pasvorm of combinatie te laten proberen, zag de klant zelf het verschil.
+            </p>
+            <blockquote>
+              <p>“Als iemand in de spiegel kijkt en je ziet de sprankeling terugkomen, dan is mijn advies geslaagd.”</p>
+              <footer>Ilona Frederiks</footer>
+            </blockquote>
+          </div>
+        </section>
+
+        <section className="experienceSection" id="ervaring" aria-labelledby="experience-title">
           <div className="editorialHeading" data-reveal>
             <p className="sectionIndex">02</p>
+            <div>
+              <p className="eyebrow">Werkervaring</p>
+              <h2 id="experience-title">Ervaring die vertrouwen geeft.</h2>
+            </div>
+            <p className="sectionIntro">
+              Ervaring in modeverkoop, klantadvies, ondernemerschap en gastvrijheid — altijd met
+              aandacht voor mensen en een verzorgde omgeving.
+            </p>
+          </div>
+
+          <div className="experienceList">
+            {experience.map((item, index) => (
+              <article className="experienceItem" key={`${item.period}-${item.company}`} data-reveal>
+                <div className="experienceMeta">
+                  <span>{String(index + 1).padStart(2, "0")}</span>
+                  <time dateTime={item.dateTime}>{item.period}</time>
+                  <p>{item.location}</p>
+                </div>
+                <div className="experienceMain">
+                  <p className="experienceRole">{item.role}</p>
+                  <h3>{item.company}</h3>
+                  <p className="experienceSummary">{item.summary}</p>
+                </div>
+                <div className="experienceDetails">
+                  <p className="detailLabel">Rolaccenten</p>
+                  <ul>
+                    {item.responsibilities.map((responsibility) => (
+                      <li key={responsibility}>{responsibility}</li>
+                    ))}
+                  </ul>
+                  <div className="tagList" aria-label="Vaardigheden">
+                    {item.tags.map((tag) => <span key={tag}>{tag}</span>)}
+                  </div>
+                </div>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        <section className="ambitionSection" id="beschikbaarheid" aria-labelledby="ambition-title">
+          <div className="ambitionStory" data-reveal>
+            <p className="eyebrow eyebrowLight">Ambitie</p>
+            <h2 id="ambition-title">Groeien binnen de winkel</h2>
+            <p className="ambitionLead">
+              Ilona zoekt een vaste functie als verkoopmedewerker in een kledingwinkel. Op termijn
+              wil zij zich ontwikkelen richting een leidinggevende rol.
+            </p>
+            <p>
+              Haar ervaring als ondernemer, het begeleiden van groepen en haar leidinggevende rol
+              binnen een worshipband hebben haar geleerd om verantwoordelijkheid te nemen, overzicht
+              te bewaren en mensen met positieve energie mee te nemen. Dat natuurlijke leiderschap
+              wil zij verder ontwikkelen in de winkel.
+            </p>
+            <div className="personalNote">
+              <p className="eyebrow eyebrowLight">Persoonlijk</p>
+              <h3>Mode, muziek en verbinding</h3>
+              <p>
+                Mode en muziek lopen als een rode draad door Ilona’s leven. Ze is dagelijks bezig
+                met kleding, styling en trends en brengt in groepen graag mensen samen.
+              </p>
+            </div>
+          </div>
+
+          <div className="availabilityPanel" data-reveal data-reveal-delay="1">
+            <p className="eyebrow">Beschikbaarheid</p>
+            <h3>Een persoonlijke winkel past het best.</h3>
+            <dl>
+              <div><dt>Gewenste functie</dt><dd>Verkoopmedewerker in een kledingwinkel</dd></div>
+              <div><dt>Dienstverband</dt><dd>Vaste baan</dd></div>
+              <div><dt>Beschikbaar</dt><dd>16–24 uur per week</dd></div>
+              <div><dt>Voorkeursdagen</dt><dd>Maandag, dinsdag en donderdag</dd></div>
+              <div><dt>Weekend</dt><dd>Alleen bij hoge uitzondering</dd></div>
+              <div><dt>Regio</dt><dd>Maximaal circa 30 minuten reizen vanaf Zwolle</dd></div>
+              <div><dt>Startdatum</dt><dd><time dateTime="2026-08-17">17 augustus 2026</time></dd></div>
+              <div><dt>Voorkeur</dt><dd>Een kleine, persoonlijke kledingwinkel</dd></div>
+              <div><dt>Ambitie</dt><dd>Doorgroeien richting leidinggevende</dd></div>
+            </dl>
+          </div>
+        </section>
+
+        <section className="quotesSection" id="talenten" aria-labelledby="quotes-title">
+          <div className="quotesHeading" data-reveal>
+            <p className="eyebrow">Professioneel profiel</p>
+            <h2 id="quotes-title">Wat haar werk typeert.</h2>
+            <p>
+              Drie krachtlijnen uit de Jane Talentenrapportage van 2026. Jane® is een
+              geregistreerd advies- en trainingsproduct dat motivatiepatronen en potentiële
+              vaardigheden in kaart brengt.
+            </p>
+          </div>
+          <div className="quoteGrid">
+            {talentQuotes.map((item, index) => (
+              <article key={item.talent} data-reveal data-reveal-delay={String(index)}>
+                <span className="talentIndex" aria-hidden="true">{String(index + 1).padStart(2, "0")}</span>
+                <p>{item.quote}</p>
+                <footer>
+                  <strong>{item.talent}</strong>
+                  <small>Jane Talentenrapportage · 2026</small>
+                </footer>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        <section className="portfolioSection" id="portfolio" aria-labelledby="portfolio-title">
+          <div className="editorialHeading" data-reveal>
+            <p className="sectionIndex">03</p>
             <div>
               <p className="eyebrow">Beauty archive</p>
               <h2 id="portfolio-title">Het oog wil ook wat.</h2>
@@ -377,94 +554,6 @@ export default function Home() {
           </details>
         </section>
 
-        <section className="profileSection" id="profieltekst" aria-labelledby="profile-title">
-          <div className="profileStatement" data-reveal>
-            <p className="eyebrow eyebrowLight">Profiel</p>
-            <h2 id="profile-title">Mooi presenteren begint met goed kijken.</h2>
-          </div>
-          <div className="profileCopy" data-reveal data-reveal-delay="1">
-            <p className="profileLead">
-              Ilona ziet hoe mensen, ideeën en producten beter uit de verf kunnen komen.
-            </p>
-            <p>
-              Ze combineert presentatiekracht met een praktische aanpak: kansen herkennen,
-              de bedoeling vertalen naar heldere stappen en vasthouden aan wat kwaliteit oplevert.
-              Dat maakt haar waardevol in rollen waarin klantcontact, uitstraling en uitvoering
-              elkaar versterken.
-            </p>
-            <ul className="profilePillars" aria-label="Kernkwaliteiten">
-              <li><span>01</span><strong>Zichtbaar maken</strong><p>Stijl en presentatie inzetten om waarde voelbaar te maken.</p></li>
-              <li><span>02</span><strong>Helder maken</strong><p>Een bedoeling vertalen naar praktische, begrijpelijke stappen.</p></li>
-              <li><span>03</span><strong>Vooruitbrengen</strong><p>Kansen zien, benutten en zorgvuldig integreren.</p></li>
-            </ul>
-          </div>
-        </section>
-
-        <section className="experienceSection" id="ervaring" aria-labelledby="experience-title">
-          <div className="editorialHeading" data-reveal>
-            <p className="sectionIndex">03</p>
-            <div>
-              <p className="eyebrow">Curriculum vitae</p>
-              <h2 id="experience-title">Ervaring in beweging.</h2>
-            </div>
-            <p className="sectionIntro">
-              Van eigen ondernemerschap en modeverkoop tot performance, hospitality en vrijwilligerswerk.
-            </p>
-          </div>
-
-          <div className="experienceList">
-            {experience.map((item, index) => (
-              <article className="experienceItem" key={`${item.period}-${item.company}`} data-reveal>
-                <div className="experienceMeta">
-                  <span>{String(index + 1).padStart(2, "0")}</span>
-                  <time dateTime={item.dateTime}>{item.period}</time>
-                  <p>{item.location}</p>
-                </div>
-                <div className="experienceMain">
-                  <p className="experienceRole">{item.role}</p>
-                  <h3>{item.company}</h3>
-                  <p className="experienceSummary">{item.summary}</p>
-                </div>
-                <div className="experienceDetails">
-                  <p className="detailLabel">Rolaccenten</p>
-                  <ul>
-                    {item.responsibilities.map((responsibility) => (
-                      <li key={responsibility}>{responsibility}</li>
-                    ))}
-                  </ul>
-                  <div className="tagList" aria-label="Vaardigheden">
-                    {item.tags.map((tag) => <span key={tag}>{tag}</span>)}
-                  </div>
-                </div>
-              </article>
-            ))}
-          </div>
-        </section>
-
-        <section className="quotesSection" id="talenten" aria-labelledby="quotes-title">
-          <div className="quotesHeading" data-reveal>
-            <p className="eyebrow">Professioneel profiel</p>
-            <h2 id="quotes-title">Wat haar werk typeert.</h2>
-            <p>
-              Drie krachtlijnen uit de Jane Talentenrapportage van 2026. Jane® is een
-              geregistreerd advies- en trainingsproduct dat motivatiepatronen en potentiële
-              vaardigheden in kaart brengt.
-            </p>
-          </div>
-          <div className="quoteGrid">
-            {talentQuotes.map((item, index) => (
-              <article key={item.talent} data-reveal data-reveal-delay={String(index)}>
-                <span className="talentIndex" aria-hidden="true">{String(index + 1).padStart(2, "0")}</span>
-                <p>{item.quote}</p>
-                <footer>
-                  <strong>{item.talent}</strong>
-                  <small>Jane Talentenrapportage · 2026</small>
-                </footer>
-              </article>
-            ))}
-          </div>
-        </section>
-
         <section className="educationSection" id="opleiding" aria-labelledby="education-title">
           <div className="educationHeading" data-reveal>
             <p className="sectionIndex">04</p>
@@ -507,8 +596,10 @@ export default function Home() {
         <footer className="contact" id="contact" aria-labelledby="contact-title">
           <div className="contactTop" data-reveal>
             <p className="eyebrow eyebrowLight">Contact</p>
-            <h2 id="contact-title">Samen iets zichtbaar maken?</h2>
-            <p>Ilona maakt graag kennis voor een passende functie of creatieve samenwerking.</p>
+            <h2 id="contact-title">Kennismaken met Ilona?</h2>
+            <p>
+              Ilona maakt graag kennis met een kleine, persoonlijke kledingwinkel in Zwolle en omgeving.
+            </p>
             <div className="contactActions">
               <a
                 className="contactCta"
@@ -516,7 +607,7 @@ export default function Home() {
                 target="_blank"
                 rel="noreferrer"
               >
-                WhatsApp met Ilona <ArrowIcon />
+                Maak kennis met Ilona <ArrowIcon />
               </a>
               <a className="contactCta contactCtaSecondary" href="/Ilona-Frederiks-CV.pdf" download>
                 Download cv als pdf <span aria-hidden="true">↓</span>

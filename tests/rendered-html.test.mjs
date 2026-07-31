@@ -52,8 +52,8 @@ test("server-renders Ilona's complete portfolio page and metadata", async () => 
 
   const html = await response.text();
   assert.match(html, /<html[^>]*lang="nl"/i);
-  assert.match(html, /<title>Ilona Frederiks \| Styling, verkoop &amp; performance<\/title>/i);
-  assert.match(html, /property="og:image"[^>]*content="https:\/\/www\.ilonafrederiks\.nl\/og\.jpg"/i);
+  assert.match(html, /<title>Ilona Frederiks \| Verkoopmedewerker mode, klantadvies &amp; styling<\/title>/i);
+  assert.match(html, /property="og:image"[^>]*content="https:\/\/www\.ilonafrederiks\.nl\/og\.png"/i);
   assert.match(html, /rel="canonical"[^>]*href="https:\/\/www\.ilonafrederiks\.nl\/"/i);
   assert.match(html, /id="portfolio"/i);
   assert.match(html, /Beauty archive/i);
@@ -63,9 +63,15 @@ test("server-renders Ilona's complete portfolio page and metadata", async () => 
   assert.match(html, /2024\s*—\s*heden/i);
   assert.match(html, /Vonk in Kampen/i);
   assert.match(html, /Barista · vrijwilligerswerk/i);
-  assert.match(html, /WhatsApp met Ilona/i);
-  assert.match(html, /Beschikbaar voor een gesprek/i);
-  assert.match(html, /24–32 uur per week/i);
+  assert.match(html, /Verkoopmedewerker mode · klantadvies · styling/i);
+  assert.match(html, /Mode verkopen begint met iemand echt zien\./i);
+  assert.match(html, /Ik ben Ilona: een enthousiaste en gastvrije verkoopmedewerker/i);
+  assert.match(html, /Beschikbaar voor 16–24 uur per week in Zwolle en omgeving\./i);
+  assert.match(html, /Beschikbaar vanaf 17 augustus 2026/i);
+  assert.match(html, /16–24 uur per week/i);
+  assert.match(html, /Maandag · dinsdag · donderdag/i);
+  assert.match(html, /datetime="2026-08-17"[^>]*>17 augustus 2026/i);
+  assert.match(html, /Vaste baan/i);
   assert.match(html, /Approach of Life/i);
   assert.match(html, /href="https:\/\/www\.approachoflife\.nl\/"/i);
   assert.match(html, /Bruidskapsel Bootcamp/i);
@@ -89,12 +95,52 @@ test("server-renders Ilona's complete portfolio page and metadata", async () => 
   assert.doesNotMatch(html, /ilona-be-you-tiful\.jpg/i);
   assert.doesNotMatch(html, /be-you-tiful-logo|bruidsaccessoires|haarstyling-tools|mobile-beauty-kit/i);
   assert.doesNotMatch(html, /kleurpaletten|lip-edit|eye-detail-kit|finishing-details/i);
-  assert.match(html, /hero-editorial-2200\.jpg/i);
-  assert.match(html, /Styling · Verkoop · Performance/i);
+  assert.match(html, /ilona-frederiks-1000\.jpg/i);
+  assert.doesNotMatch(html, /hero-editorial-(?:1200|2200)\.jpg/i);
+  assert.match(html, /Persoonlijke aandacht met gevoel voor stijl/i);
+  assert.match(html, /Wat Ilona meebrengt/i);
+  assert.match(html, /Persoonlijk klantadvies/i);
+  assert.match(html, /Verkoopgevoel/i);
+  assert.match(html, /Styling en presentatie/i);
+  assert.match(html, /Positieve teamenergie/i);
+  assert.match(html, /Wanneer een klant weer gaat stralen/i);
+  assert.match(html, /Als iemand in de spiegel kijkt en je ziet de sprankeling terugkomen/i);
+  assert.match(html, /Groeien binnen de winkel/i);
+  assert.match(html, /leidinggevende rol[\s\S]*binnen een worshipband/i);
+  assert.match(html, /natuurlijke leiderschap/i);
+  assert.match(html, /Doorgroeien richting leidinggevende/i);
+  assert.match(html, /Mode, muziek en verbinding/i);
   assert.match(html, /Jane Talentenrapportage/i);
   assert.match(html, /geregistreerd advies- en trainingsproduct/i);
   assert.match(html, /href="\/Ilona-Frederiks-CV\.pdf"[^>]*download/i);
   assert.doesNotMatch(html, /Portfolio volgt|Instagram-profiel wordt later toegevoegd/i);
+  assert.doesNotMatch(html, /Styling\s*·\s*Verkoop\s*·\s*Performance/i);
+  assert.doesNotMatch(html, /Styling,\s*verkoop\s*(?:&amp;|&)\s*performance/i);
+  assert.doesNotMatch(html, /Stijl die zichtbaar maakt\. Energie die mensen meeneemt\./i);
+
+  const hero = html.slice(html.indexOf('class="heroIntroduction"'), html.indexOf('class="profileSection"'));
+  assert.match(hero, /href="#ervaring"[^>]*>\s*Bekijk mijn ervaring/i);
+  assert.match(hero, /href="https:\/\/wa\.me\/31657177997"[^>]*>[\s\S]*?Maak kennis met Ilona/i);
+  assert.doesNotMatch(hero, /Bekijk portfolio|WhatsApp met Ilona/i);
+
+  const availability = html.slice(html.indexOf('class="ambitionSection"'), html.indexOf('class="quotesSection"'));
+  assert.match(availability, /Gewenste functie[\s\S]*Verkoopmedewerker in een kledingwinkel/i);
+  assert.match(availability, /Dienstverband[\s\S]*Vaste baan/i);
+  assert.match(availability, /Beschikbaar[\s\S]*16–24 uur per week/i);
+  assert.match(availability, /Voorkeursdagen[\s\S]*Maandag, dinsdag en donderdag/i);
+  assert.match(availability, /Weekend[\s\S]*Alleen bij hoge uitzondering/i);
+  assert.match(availability, /Regio[\s\S]*Maximaal circa 30 minuten reizen vanaf Zwolle/i);
+  assert.match(availability, /Startdatum[\s\S]*datetime="2026-08-17"[^>]*>17 augustus 2026/i);
+  assert.match(availability, /Voorkeur[\s\S]*Een kleine, persoonlijke kledingwinkel/i);
+  assert.match(availability, /Ambitie[\s\S]*Doorgroeien richting leidinggevende/i);
+
+  const corpus = html;
+  assert.doesNotMatch(corpus, /\b(?:BSN|geboortedatum)\b/i);
+  assert.doesNotMatch(corpus, /\b\d{4}\s?[A-Z]{2}\b/);
+  assert.doesNotMatch(corpus, /\b(?:300\s+workshops|100\s+klanten)\b/i);
+  assert.doesNotMatch(corpus, /["']?(?:birthDate|address|children|spouse|taxID)["']?\s*:/i);
+  assert.doesNotMatch(corpus, /\b(?:kind|zoon|dochter|man|echtgenoot)\b.{0,40}\b\d{1,3}\s*(?:jaar|jaren)\b/is);
+  assert.doesNotMatch(corpus, /\bgeloof\b/i);
 
   const sissyBoyPosition = html.indexOf("Sissy-Boy");
   const danceTeacherPosition = html.indexOf("Dansworkshops op scholen");
@@ -123,6 +169,9 @@ test("keeps interaction, accessibility and content safeguards in source", async 
   assert.match(page, /<main id="main-content" tabIndex=\{-1\}>/);
   assert.match(page, /alt="Portret van Ilona Frederiks"/);
   assert.match(page, /className="heroDesktopArtwork"/);
+  assert.match(page, /className="heroDesktopIdentity"/);
+  assert.match(page, /className="heroDesktopPortrait"/);
+  assert.doesNotMatch(page, /hero-editorial-(?:1200|2200)\.jpg/i);
   assert.match(page, /className="heroMobileArtwork"/);
   assert.match(page, /<details className="portfolioDisclosure">/);
   assert.match(page, /<summary>/);
@@ -131,7 +180,14 @@ test("keeps interaction, accessibility and content safeguards in source", async 
   assert.match(page, /Warm & polished/);
   assert.doesNotMatch(page, /Soft glamour/);
   assert.doesNotMatch(page, /ilona-be-you-tiful\.jpg/);
-  assert.match(page, /24–32 uur per week/);
+  assert.match(page, /16–24 uur per week/);
+  assert.match(page, /dateTime="2026-08-17"/);
+  assert.match(page, /Bekijk mijn ervaring/);
+  assert.match(page, /Maak kennis met Ilona/);
+  assert.match(page, /Persoonlijke aandacht met gevoel voor stijl/);
+  assert.match(page, /Wanneer een klant weer gaat stralen/);
+  assert.match(page, /Groeien binnen de winkel/);
+  assert.doesNotMatch(page, /jobTitle:\s*"Allround professional in styling, verkoop en performance"/i);
   assert.match(page, /Approach of Life/);
   assert.match(page, /Bruidskapsel Bootcamp/);
   assert.match(page, /Make-up Artist/);
@@ -144,11 +200,14 @@ test("keeps interaction, accessibility and content safeguards in source", async 
   assert.match(layout, /metadataBase: new URL\("https:\/\/www\.ilonafrederiks\.nl"\)/);
   assert.match(menu, /aria-expanded=\{isOpen\}/);
   assert.match(menu, /#profieltekst/);
+  assert.match(menu, /#beschikbaarheid/);
   assert.match(effects, /prefers-reduced-motion: reduce/);
   assert.match(effects, /IntersectionObserver/);
   assert.match(css, /scroll-behavior:\s*smooth/);
   assert.match(css, /:focus-visible/);
   assert.match(css, /\.portfolioItem--portrait figcaption,[\s\S]*?grid-template-columns:\s*minmax\(0,\s*1fr\)/);
+  assert.match(css, /\.practiceSection/);
+  assert.match(css, /\.ambitionSection/);
   assert.match(css, /@media\s*\(prefers-reduced-motion:\s*reduce\)/);
 
   const pdf = await readFile(new URL("../public/Ilona-Frederiks-CV.pdf", import.meta.url));
@@ -175,6 +234,8 @@ test("ships optimized, metadata-clean portfolio variants", async () => {
 
   const publicFiles = await readdir(new URL("../public/", import.meta.url), { recursive: true });
   assert.doesNotMatch(publicFiles.join("\n"), /IMG_0126|IMG_0127|IMG_0128|\.heic$/im);
+  assert.doesNotMatch(publicFiles.join("\n"), /(^|\/)og\.jpg$/im);
+  assert.match(publicFiles.join("\n"), /(^|\/)og\.png$/im);
 
   for (const [name, width, height] of assets) {
     const image = await readFile(new URL(`../public/portfolio/${name}`, import.meta.url));

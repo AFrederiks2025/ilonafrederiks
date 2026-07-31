@@ -1,9 +1,9 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
 
-const title = "Ilona Frederiks | Styling, verkoop & performance";
+const title = "Ilona Frederiks | Verkoopmedewerker mode, klantadvies & styling";
 const description =
-  "Portfolio en cv van Ilona Frederiks, allround professional in styling, verkoop en performance in Zwolle. Bekijk haar werk, ervaring en beschikbaarheid.";
+  "Maak kennis met Ilona Frederiks: verkoopmedewerker mode met ervaring in persoonlijk klantadvies, styling en winkelpresentatie. Beschikbaar voor 16–24 uur per week in Zwolle en omgeving.";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.ilonafrederiks.nl"),
@@ -22,10 +22,10 @@ export const metadata: Metadata = {
     siteName: "Ilona Frederiks",
     images: [
       {
-        url: "/og.jpg",
+        url: "/og.png",
         width: 1200,
         height: 630,
-        alt: "Ilona Frederiks — styling, verkoop en performance in Zwolle",
+        alt: "Ilona Frederiks — verkoopmedewerker mode, klantadvies en styling in Zwolle",
       },
     ],
   },
@@ -33,7 +33,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title,
     description,
-    images: ["/og.jpg"],
+    images: ["/og.png"],
   },
   robots: {
     index: true,
