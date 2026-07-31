@@ -86,4 +86,8 @@ test("keeps interaction, accessibility and content safeguards in source", async 
   assert.match(css, /scroll-behavior:\s*smooth/);
   assert.match(css, /:focus-visible/);
   assert.match(css, /@media\s*\(prefers-reduced-motion:\s*reduce\)/);
+
+  const pdf = await readFile(new URL("../public/Ilona-Frederiks-CV.pdf", import.meta.url));
+  assert.equal(pdf.subarray(0, 5).toString("ascii"), "%PDF-");
+  assert.ok(pdf.byteLength > 100_000, "De downloadbare cv-pdf moet een volledig document zijn");
 });
