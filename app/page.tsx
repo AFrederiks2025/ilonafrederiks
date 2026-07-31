@@ -100,8 +100,8 @@ export default function Home() {
             <img
               src="/ilona-frederiks.jpg"
               alt="Portret van Ilona Frederiks"
-              width="355"
-              height="542"
+              width="1536"
+              height="2048"
               fetchPriority="high"
             />
           </div>
