@@ -750,15 +750,6 @@ footer {
 .portfolioItem--featureWide .portfolioImage { aspect-ratio: 16 / 9; }
 .portfolioItem--wideEnd .portfolioImage { aspect-ratio: 3 / 2; }
 
-.portfolioItem.brandTile .portfolioImage {
-  background: var(--paper);
-}
-
-.portfolioItem.brandTile img {
-  padding: clamp(2rem, 5vw, 5rem);
-  object-fit: contain;
-}
-
 .portfolioImage img {
   display: block;
   width: 100%;

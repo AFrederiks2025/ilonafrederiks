@@ -9,7 +9,6 @@ type PortfolioItem = {
   title: string;
   caption: string;
   layout: string;
-  modifier?: string;
   width: number;
   height: number;
 };
@@ -26,9 +25,9 @@ const portfolio: PortfolioItem[] = [
   {
     image: "/portfolio/ilona-visagist-portret.jpg",
     alt: "Ilona Frederiks houdt een grote make-upkwast naast haar gezicht tegen een lichte achtergrond",
-    category: "Portret",
-    title: "In haar element",
-    caption: "Ilona in de wereld van visagie, styling en persoonlijke presentatie.",
+    category: "Beauty look",
+    title: "Warm & polished",
+    caption: "Een complete beautylook met warme tinten, zachte contouren en een verzorgde finish.",
     layout: "feature",
     width: 1107,
     height: 1400,
@@ -36,93 +35,12 @@ const portfolio: PortfolioItem[] = [
   {
     image: "/portfolio/ilona-be-you-tiful.jpg",
     alt: "Ilona Frederiks staat met meerdere make-upkwasten en een gevulde kwastenriem tegen een lichte achtergrond",
-    category: "Be-You-tiful",
-    title: "Vakvrouw in beeld",
-    caption: "Professionele tools, aandacht voor detail en een persoonlijke benadering.",
+    category: "Visagie",
+    title: "Soft glamour",
+    caption: "Een afgewerkte look met een frisse huid, gedefinieerde ogen en een elegante uitstraling.",
     layout: "portrait",
     width: 683,
     height: 1024,
-  },
-  {
-    image: "/portfolio/be-you-tiful-logo.png",
-    alt: "Be-You-tiful-logo met de letters BF in een vierkant",
-    category: "Eigen onderneming",
-    title: "Be-You-tiful",
-    caption: "Ilona’s onderneming in bruidsmake-up, haarstyling en visagie van 2020 tot 2023.",
-    layout: "square",
-    modifier: "brandTile",
-    width: 500,
-    height: 500,
-  },
-  {
-    image: "/portfolio/bruidsaccessoires.jpg",
-    alt: "Verfijnde haaraccessoires voor bruidsstyling in een glazen doosje",
-    category: "Bruidsstyling",
-    title: "Finishing touch",
-    caption: "Haaraccessoires geselecteerd voor een verfijnde afwerking.",
-    layout: "wide",
-    width: 900,
-    height: 1200,
-  },
-  {
-    image: "/portfolio/haarstyling-tools.jpg",
-    alt: "Haarstylinggereedschap en verzorgingsproducten voorbereid op een kast",
-    category: "Hair",
-    title: "Prepared to perform",
-    caption: "Tools en producten klaar voor efficiënt haarwerk.",
-    layout: "landscape",
-    width: 1200,
-    height: 900,
-  },
-  {
-    image: "/portfolio/mobile-beauty-kit.jpg",
-    alt: "Professionele make-up trolleys en koffers voor werk op locatie",
-    category: "On location",
-    title: "Mobile studio",
-    caption: "Een complete mobiele set voor verzorgde styling op locatie.",
-    layout: "portrait",
-    width: 900,
-    height: 1200,
-  },
-  {
-    image: "/portfolio/kleurpaletten.jpg",
-    alt: "Uitgestalde oogschaduwpaletten met uiteenlopende kleuren",
-    category: "Colour",
-    title: "Palette study",
-    caption: "Een breed palet voor looks van naturel tot uitgesproken.",
-    layout: "featureWide",
-    width: 900,
-    height: 1200,
-  },
-  {
-    image: "/portfolio/lip-edit.jpg",
-    alt: "Geordende collectie lippenstiften en lipproducten",
-    category: "Beauty",
-    title: "Lip edit",
-    caption: "Kleur en finish afgestemd op uitstraling en moment.",
-    layout: "portraitSmall",
-    width: 900,
-    height: 1200,
-  },
-  {
-    image: "/portfolio/eye-detail-kit.jpg",
-    alt: "Geordende make-uplade met producten voor oogmake-up",
-    category: "Detail",
-    title: "Eye edit",
-    caption: "Een georganiseerde selectie voor precieze ooglooks.",
-    layout: "portraitSmall",
-    width: 900,
-    height: 1200,
-  },
-  {
-    image: "/portfolio/finishing-details.jpg",
-    alt: "Lade met wimpers, haarspelden en materialen voor de afwerking",
-    category: "Finishing",
-    title: "Pins & lashes",
-    caption: "De kleinste details geven een look haar definitieve vorm.",
-    layout: "wideEnd",
-    width: 900,
-    height: 1200,
   },
 ];
 
@@ -370,8 +288,8 @@ export default function Home() {
               <h2 id="portfolio-title">Het oog wil ook wat.</h2>
             </div>
             <p className="sectionIntro">
-              Een visuele selectie uit Ilona&apos;s beauty-achtergrond: eigen beeld, merk,
-              studio, tools en details die haar aandacht voor presentatie zichtbaar maken.
+              Een compacte selectie van verzorgde beautylooks op persoon. Alleen het zichtbare
+              eindresultaat staat centraal.
             </p>
           </div>
 
@@ -388,7 +306,7 @@ export default function Home() {
             <div className="portfolioGrid">
               {portfolio.map((item, index) => (
                 <figure
-                  className={`portfolioItem portfolioItem--${item.layout}${item.modifier ? ` ${item.modifier}` : ""}`}
+                  className={`portfolioItem portfolioItem--${item.layout}`}
                   key={item.image}
                   data-reveal
                   data-reveal-delay={String(index % 3)}

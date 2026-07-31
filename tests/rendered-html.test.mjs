@@ -48,7 +48,10 @@ test("server-renders Ilona's complete portfolio page and metadata", async () => 
   assert.match(html, /href="https:\/\/www\.approachoflife\.nl\/"/i);
   assert.match(html, /ilona-visagist-portret\.jpg/i);
   assert.match(html, /ilona-be-you-tiful\.jpg/i);
-  assert.match(html, /be-you-tiful-logo\.png/i);
+  assert.match(html, /2(?:<!--.*?-->)?\s*beelden/i);
+  assert.match(html, /Alleen het zichtbare\s+eindresultaat staat centraal/i);
+  assert.doesNotMatch(html, /be-you-tiful-logo|bruidsaccessoires|haarstyling-tools|mobile-beauty-kit/i);
+  assert.doesNotMatch(html, /kleurpaletten|lip-edit|eye-detail-kit|finishing-details/i);
   assert.match(html, /hero-editorial-2200\.jpg/i);
   assert.match(html, /Styling · Verkoop · Performance/i);
   assert.match(html, /Jane Talentenrapportage/i);
