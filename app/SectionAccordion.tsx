@@ -20,24 +20,16 @@ export default function SectionAccordion({
   const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
-    const desktop = window.matchMedia("(min-width: 901px)");
-
-    const syncToViewport = () => {
-      setIsOpen(desktop.matches || window.location.hash === `#${id}`);
-    };
-
     const openForHash = () => {
       if (window.location.hash === `#${id}`) {
         setIsOpen(true);
       }
     };
 
-    syncToViewport();
-    desktop.addEventListener("change", syncToViewport);
+    openForHash();
     window.addEventListener("hashchange", openForHash);
 
     return () => {
-      desktop.removeEventListener("change", syncToViewport);
       window.removeEventListener("hashchange", openForHash);
     };
   }, [id]);

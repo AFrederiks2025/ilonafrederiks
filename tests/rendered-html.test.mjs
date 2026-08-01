@@ -61,6 +61,7 @@ test("server-renders Ilona's complete portfolio page and metadata", async () => 
   assert.match(html, /<details(?=[^>]*id="talenten")(?=[^>]*class="sectionAccordion sectionAccordion--soft")/i);
   assert.match(html, /Ambitie &amp; beschikbaarheid/i);
   assert.match(html, /Wie Ilona is en wat zij meebrengt/i);
+  assert.doesNotMatch(html, /<details[^>]*class="sectionAccordion[^"]*"[^>]*\bopen\b/i);
   assert.match(html, /Beauty archive/i);
   assert.match(html, /<details class="portfolioDisclosure">/i);
   assert.match(html, /Bekijk beauty archive/i);
@@ -211,7 +212,7 @@ test("keeps interaction, accessibility and content safeguards in source", async 
   assert.match(menu, /#beschikbaarheid/);
   assert.match(accordion, /<details/);
   assert.match(accordion, /<summary>/);
-  assert.match(accordion, /matchMedia\("\(min-width: 901px\)"\)/);
+  assert.doesNotMatch(accordion, /matchMedia/);
   assert.match(accordion, /hashchange/);
   assert.match(accordion, /onToggle=/);
   assert.match(effects, /prefers-reduced-motion: reduce/);
