@@ -112,6 +112,8 @@ test("server-renders Ilona's complete portfolio page and metadata", async () => 
   assert.match(html, /Mode, muziek en verbinding/i);
   assert.match(html, /Jane Talentenrapportage/i);
   assert.match(html, /geregistreerd advies- en trainingsproduct/i);
+  const talents = html.slice(html.indexOf('id="talenten"'), html.indexOf('class="portfolioSection"'));
+  assert.doesNotMatch(talents, /2026/i);
   assert.match(html, /href="\/Ilona-Frederiks-CV\.pdf"[^>]*download/i);
   assert.doesNotMatch(html, /Portfolio volgt|Instagram-profiel wordt later toegevoegd/i);
   assert.doesNotMatch(html, /Styling\s*·\s*Verkoop\s*·\s*Performance/i);

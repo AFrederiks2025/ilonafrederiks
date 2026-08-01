@@ -476,7 +476,7 @@ export default function Home() {
             <p className="eyebrow">Professioneel profiel</p>
             <h2 id="quotes-title">Wat haar werk typeert.</h2>
             <p>
-              Drie krachtlijnen uit de Jane Talentenrapportage van 2026. Jane® is een
+              Drie krachtlijnen uit de Jane Talentenrapportage. Jane® is een
               geregistreerd advies- en trainingsproduct dat motivatiepatronen en potentiële
               vaardigheden in kaart brengt.
             </p>
@@ -488,7 +488,7 @@ export default function Home() {
                 <p>{item.quote}</p>
                 <footer>
                   <strong>{item.talent}</strong>
-                  <small>Jane Talentenrapportage · 2026</small>
+                  <small>Jane Talentenrapportage</small>
                 </footer>
               </article>
             ))}
