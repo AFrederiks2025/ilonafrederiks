@@ -1,6 +1,7 @@
 /* eslint-disable @next/next/no-img-element -- Handgemaakte srcSet-varianten houden deze statische portfolio snel op beide hosts. */
 import MobileMenu from "./MobileMenu";
 import RevealEffects from "./RevealEffects";
+import SectionAccordion from "./SectionAccordion";
 
 type PortfolioItem = {
   image: string;
@@ -337,7 +338,13 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="profileSection" id="profieltekst" aria-labelledby="profile-title">
+        <SectionAccordion
+          id="profieltekst"
+          label="Profiel"
+          description="Wie Ilona is en wat zij meebrengt"
+          tone="dark"
+        >
+        <section className="profileSection" aria-labelledby="profile-title">
           <div className="profileStatement" data-reveal>
             <p className="eyebrow eyebrowLight">Profiel</p>
             <h2 id="profile-title">Persoonlijke aandacht met gevoel voor stijl</h2>
@@ -366,8 +373,15 @@ export default function Home() {
             </ul>
           </div>
         </section>
+        </SectionAccordion>
 
-        <section className="practiceSection" id="praktijk" aria-labelledby="practice-title">
+        <SectionAccordion
+          id="praktijk"
+          label="In de praktijk"
+          description="Een voorbeeld van persoonlijk klantadvies"
+          tone="soft"
+        >
+        <section className="practiceSection" aria-labelledby="practice-title">
           <div className="practiceHeading" data-reveal>
             <p className="eyebrow">Uit de winkelpraktijk</p>
             <h2 id="practice-title">Wanneer een klant weer gaat stralen</h2>
@@ -387,8 +401,14 @@ export default function Home() {
             </blockquote>
           </div>
         </section>
+        </SectionAccordion>
 
-        <section className="experienceSection" id="ervaring" aria-labelledby="experience-title">
+        <SectionAccordion
+          id="ervaring"
+          label="Werkervaring"
+          description="Functies, verantwoordelijkheden en rolaccenten"
+        >
+        <section className="experienceSection" aria-labelledby="experience-title">
           <div className="editorialHeading" data-reveal>
             <p className="sectionIndex">02</p>
             <div>
@@ -429,8 +449,15 @@ export default function Home() {
             ))}
           </div>
         </section>
+        </SectionAccordion>
 
-        <section className="ambitionSection" id="beschikbaarheid" aria-labelledby="ambition-title">
+        <SectionAccordion
+          id="beschikbaarheid"
+          label="Ambitie & beschikbaarheid"
+          description="Gewenste functie, uren en persoonlijke voorkeuren"
+          tone="dark"
+        >
+        <section className="ambitionSection" aria-labelledby="ambition-title">
           <div className="ambitionStory" data-reveal>
             <p className="eyebrow eyebrowLight">Ambitie</p>
             <h2 id="ambition-title">Groeien binnen de winkel</h2>
@@ -470,8 +497,15 @@ export default function Home() {
             </dl>
           </div>
         </section>
+        </SectionAccordion>
 
-        <section className="quotesSection" id="talenten" aria-labelledby="quotes-title">
+        <SectionAccordion
+          id="talenten"
+          label="Talenten"
+          description="Drie krachtlijnen uit de Jane Talentenrapportage"
+          tone="soft"
+        >
+        <section className="quotesSection" aria-labelledby="quotes-title">
           <div className="quotesHeading" data-reveal>
             <p className="eyebrow">Professioneel profiel</p>
             <h2 id="quotes-title">Wat haar werk typeert.</h2>
@@ -494,8 +528,14 @@ export default function Home() {
             ))}
           </div>
         </section>
+        </SectionAccordion>
 
-        <section className="portfolioSection" id="portfolio" aria-labelledby="portfolio-title">
+        <SectionAccordion
+          id="portfolio"
+          label="Portfolio"
+          description="Vier verzorgde beautylooks"
+        >
+        <section className="portfolioSection" aria-labelledby="portfolio-title">
           <div className="editorialHeading" data-reveal>
             <p className="sectionIndex">03</p>
             <div>
@@ -553,8 +593,14 @@ export default function Home() {
             </div>
           </details>
         </section>
+        </SectionAccordion>
 
-        <section className="educationSection" id="opleiding" aria-labelledby="education-title">
+        <SectionAccordion
+          id="opleiding"
+          label="Opleiding"
+          description="Trainingen, certificaten en creatieve basis"
+        >
+        <section className="educationSection" aria-labelledby="education-title">
           <div className="educationHeading" data-reveal>
             <p className="sectionIndex">04</p>
             <p className="eyebrow">Opleiding</p>
@@ -576,7 +622,13 @@ export default function Home() {
             ))}
           </div>
         </section>
+        </SectionAccordion>
 
+        <SectionAccordion
+          id="connect"
+          label="Connect"
+          description="LinkedIn en professioneel profiel"
+        >
         <section className="socialSection" aria-labelledby="social-title">
           <div data-reveal>
             <p className="eyebrow">Connect</p>
@@ -592,6 +644,7 @@ export default function Home() {
             </a>
           </div>
         </section>
+        </SectionAccordion>
 
         <footer className="contact" id="contact" aria-labelledby="contact-title">
           <div className="contactTop" data-reveal>

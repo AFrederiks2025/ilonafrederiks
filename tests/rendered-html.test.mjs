@@ -56,6 +56,11 @@ test("server-renders Ilona's complete portfolio page and metadata", async () => 
   assert.match(html, /property="og:image"[^>]*content="https:\/\/www\.ilonafrederiks\.nl\/og\.png"/i);
   assert.match(html, /rel="canonical"[^>]*href="https:\/\/www\.ilonafrederiks\.nl\/"/i);
   assert.match(html, /id="portfolio"/i);
+  assert.match(html, /<details(?=[^>]*id="profieltekst")(?=[^>]*class="sectionAccordion sectionAccordion--dark")/i);
+  assert.match(html, /<details(?=[^>]*id="ervaring")(?=[^>]*class="sectionAccordion sectionAccordion--light")/i);
+  assert.match(html, /<details(?=[^>]*id="talenten")(?=[^>]*class="sectionAccordion sectionAccordion--soft")/i);
+  assert.match(html, /Ambitie &amp; beschikbaarheid/i);
+  assert.match(html, /Wie Ilona is en wat zij meebrengt/i);
   assert.match(html, /Beauty archive/i);
   assert.match(html, /<details class="portfolioDisclosure">/i);
   assert.match(html, /Bekijk beauty archive/i);
@@ -160,11 +165,12 @@ test("server-renders Ilona's complete portfolio page and metadata", async () => 
 });
 
 test("keeps interaction, accessibility and content safeguards in source", async () => {
-  const [page, layout, menu, effects, css] = await Promise.all([
+  const [page, layout, menu, effects, accordion, css] = await Promise.all([
     readFile(new URL("../app/page.tsx", import.meta.url), "utf8"),
     readFile(new URL("../app/layout.tsx", import.meta.url), "utf8"),
     readFile(new URL("../app/MobileMenu.tsx", import.meta.url), "utf8"),
     readFile(new URL("../app/RevealEffects.tsx", import.meta.url), "utf8"),
+    readFile(new URL("../app/SectionAccordion.tsx", import.meta.url), "utf8"),
     readFile(new URL("../app/globals.css", import.meta.url), "utf8"),
   ]);
 
@@ -203,6 +209,11 @@ test("keeps interaction, accessibility and content safeguards in source", async 
   assert.match(menu, /aria-expanded=\{isOpen\}/);
   assert.match(menu, /#profieltekst/);
   assert.match(menu, /#beschikbaarheid/);
+  assert.match(accordion, /<details/);
+  assert.match(accordion, /<summary>/);
+  assert.match(accordion, /matchMedia\("\(min-width: 901px\)"\)/);
+  assert.match(accordion, /hashchange/);
+  assert.match(accordion, /onToggle=/);
   assert.match(effects, /prefers-reduced-motion: reduce/);
   assert.match(effects, /IntersectionObserver/);
   assert.match(css, /scroll-behavior:\s*smooth/);
@@ -210,6 +221,8 @@ test("keeps interaction, accessibility and content safeguards in source", async 
   assert.match(css, /\.portfolioItem--portrait figcaption,[\s\S]*?grid-template-columns:\s*minmax\(0,\s*1fr\)/);
   assert.match(css, /\.practiceSection/);
   assert.match(css, /\.ambitionSection/);
+  assert.match(css, /\.sectionAccordion/);
+  assert.match(css, /\.sectionAccordionIcon::after/);
   assert.match(css, /@media\s*\(prefers-reduced-motion:\s*reduce\)/);
 
   const pdf = await readFile(new URL("../public/Ilona-Frederiks-CV.pdf", import.meta.url));

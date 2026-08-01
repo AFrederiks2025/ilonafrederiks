@@ -642,6 +642,134 @@ footer {
   font-size: 1.03rem;
 }
 
+.sectionAccordion {
+  width: 100%;
+  margin: 0;
+  border: 0;
+  background: var(--paper);
+  scroll-margin-top: 5.5rem;
+}
+
+.sectionAccordion--soft {
+  background: #eadfd4;
+}
+
+.sectionAccordion--dark {
+  background: var(--wine-dark);
+  color: var(--paper);
+}
+
+.sectionAccordion > summary {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 7rem;
+  padding: 1.35rem max(2.5rem, calc((100% - 1440px) / 2));
+  border-block: 1px solid var(--line);
+  color: var(--wine-dark);
+  cursor: pointer;
+  list-style: none;
+}
+
+.sectionAccordion > summary::-webkit-details-marker {
+  display: none;
+}
+
+.sectionAccordion > summary::marker {
+  content: "";
+}
+
+.sectionAccordion--dark > summary {
+  border-color: var(--line-light);
+  color: var(--paper);
+}
+
+.sectionAccordion > summary:focus-visible {
+  outline: 3px solid #d8bd84;
+  outline-offset: -5px;
+}
+
+.sectionAccordionSummaryText {
+  display: grid;
+  grid-template-columns: minmax(11rem, 0.55fr) minmax(16rem, 1fr);
+  gap: 1rem 3rem;
+  align-items: baseline;
+  width: min(100%, 60rem);
+}
+
+.sectionAccordionSummaryText strong {
+  font-family: var(--serif);
+  font-size: clamp(1.8rem, 3vw, 3rem);
+  font-weight: 400;
+  letter-spacing: -0.035em;
+}
+
+.sectionAccordionSummaryText small {
+  color: var(--muted);
+  font-size: 0.78rem;
+  line-height: 1.55;
+}
+
+.sectionAccordion--dark .sectionAccordionSummaryText small {
+  color: rgba(252, 249, 244, 0.64);
+}
+
+.sectionAccordionAction {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  color: var(--champagne-dark);
+  font-size: 0.65rem;
+  font-weight: 750;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.sectionAccordionActionOpen {
+  display: none;
+}
+
+.sectionAccordion[open] .sectionAccordionActionClosed {
+  display: none;
+}
+
+.sectionAccordion[open] .sectionAccordionActionOpen {
+  display: inline;
+}
+
+.sectionAccordionIcon {
+  position: relative;
+  display: block;
+  width: 3.25rem;
+  height: 3.25rem;
+  flex: 0 0 auto;
+  border: 1px solid currentColor;
+  border-radius: 50%;
+}
+
+.sectionAccordionIcon::before,
+.sectionAccordionIcon::after {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 1rem;
+  height: 1px;
+  background: currentColor;
+  content: "";
+  transform: translate(-50%, -50%);
+  transition: opacity 180ms ease, transform 180ms ease;
+}
+
+.sectionAccordionIcon::after {
+  transform: translate(-50%, -50%) rotate(90deg);
+}
+
+.sectionAccordion[open] .sectionAccordionIcon::after {
+  opacity: 0;
+  transform: translate(-50%, -50%) rotate(0deg);
+}
+
 .portfolioSection,
 .experienceSection,
 .educationSection,
@@ -1688,6 +1816,10 @@ footer {
     padding-inline: 1.5rem;
   }
 
+  .sectionAccordion > summary {
+    padding-inline: 1.5rem;
+  }
+
   .experienceItem {
     grid-template-columns: 8rem 0.85fr 1.15fr;
     gap: 2rem;
@@ -2072,6 +2204,39 @@ footer {
     grid-template-columns: 1fr;
   }
 
+  .sectionAccordion > summary {
+    gap: 1rem;
+    min-height: 5.75rem;
+    padding: 1rem 1.25rem;
+  }
+
+  .sectionAccordionSummaryText {
+    grid-template-columns: 1fr;
+    gap: 0.25rem;
+  }
+
+  .sectionAccordionSummaryText strong {
+    font-size: 1.6rem;
+  }
+
+  .sectionAccordionSummaryText small {
+    max-width: 24rem;
+    font-size: 0.7rem;
+  }
+
+  .sectionAccordionAction {
+    gap: 0.65rem;
+  }
+
+  .sectionAccordionAction > span:not(.sectionAccordionIcon) {
+    display: none;
+  }
+
+  .sectionAccordionIcon {
+    width: 2.75rem;
+    height: 2.75rem;
+  }
+
   .portfolioDisclosure summary {
     gap: 1rem;
     min-height: 5.75rem;
@@ -2253,6 +2418,14 @@ footer {
   .experienceSection,
   .educationSection {
     width: 100%;
+  }
+
+  .sectionAccordion > summary {
+    display: none;
+  }
+
+  .sectionAccordion:not([open]) > :not(summary) {
+    display: block;
   }
 
   .profileSection,
