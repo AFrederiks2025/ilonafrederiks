@@ -56,10 +56,22 @@ test("server-renders Ilona's complete portfolio page and metadata", async () => 
   assert.match(html, /property="og:image"[^>]*content="https:\/\/www\.ilonafrederiks\.nl\/og\.png"/i);
   assert.match(html, /rel="canonical"[^>]*href="https:\/\/www\.ilonafrederiks\.nl\/"/i);
   assert.match(html, /id="portfolio"/i);
-  assert.match(html, /<details(?=[^>]*id="profieltekst")(?=[^>]*class="sectionAccordion sectionAccordion--light")/i);
-  assert.match(html, /<details(?=[^>]*id="ervaring")(?=[^>]*class="sectionAccordion sectionAccordion--light")/i);
-  assert.match(html, /<details(?=[^>]*id="talenten")(?=[^>]*class="sectionAccordion sectionAccordion--soft")/i);
-  assert.match(html, /<details(?=[^>]*id="beschikbaarheid")(?=[^>]*class="sectionAccordion sectionAccordion--soft")/i);
+  const sectionTones = [
+    ["profieltekst", "soft"],
+    ["praktijk", "light"],
+    ["ervaring", "soft"],
+    ["beschikbaarheid", "light"],
+    ["talenten", "soft"],
+    ["portfolio", "light"],
+    ["opleiding", "soft"],
+    ["connect", "light"],
+  ];
+  for (const [id, tone] of sectionTones) {
+    assert.match(
+      html,
+      new RegExp(`<details(?=[^>]*id="${id}")(?=[^>]*class="sectionAccordion sectionAccordion--${tone}")`, "i"),
+    );
+  }
   assert.match(html, /Ambitie &amp; beschikbaarheid/i);
   assert.match(html, /Wie Ilona is en wat zij meebrengt/i);
   assert.doesNotMatch(html, /<details[^>]*class="sectionAccordion[^"]*"[^>]*\bopen\b/i);
@@ -233,6 +245,12 @@ test("keeps interaction, accessibility and content safeguards in source", async 
   assert.match(css, /\.practiceSection/);
   assert.match(css, /\.ambitionSection/);
   assert.match(css, /\.sectionAccordion/);
+  assert.match(css, /\.sectionAccordion\s*\{[^}]*background:\s*var\(--paper\)/);
+  assert.match(css, /\.sectionAccordion--soft\s*\{[^}]*background:\s*#eadfd4/);
+  assert.match(css, /\.profileSection\s*\{[^}]*background:\s*#eadfd4/);
+  assert.match(css, /\.practiceSection\s*\{[^}]*background:\s*var\(--paper\)/);
+  assert.match(css, /\.ambitionSection\s*\{[^}]*background:\s*var\(--paper\)/);
+  assert.match(css, /\.quotesSection\s*\{[^}]*background:\s*#eadfd4/);
   assert.match(css, /\.sectionAccordionIcon::after/);
   assert.match(css, /@media\s*\(prefers-reduced-motion:\s*reduce\)/);
 

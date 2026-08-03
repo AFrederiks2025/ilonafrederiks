@@ -999,7 +999,7 @@ footer {
   gap: clamp(4rem, 9vw, 10rem);
   align-items: start;
   padding: clamp(7rem, 10vw, 11rem) max(2.5rem, calc((100% - 1440px) / 2));
-  background: var(--paper);
+  background: #eadfd4;
   color: var(--ink);
 }
 
@@ -1078,7 +1078,7 @@ footer {
   align-items: start;
   padding: clamp(7rem, 10vw, 11rem) max(2.5rem, calc((100% - 1440px) / 2));
   border-bottom: 1px solid var(--line);
-  background: #eadfd4;
+  background: var(--paper);
 }
 
 .practiceHeading h2 {
@@ -1124,7 +1124,7 @@ footer {
   gap: clamp(4rem, 9vw, 10rem);
   align-items: start;
   padding: clamp(7rem, 10vw, 11rem) max(2.5rem, calc((100% - 1440px) / 2));
-  background: #eadfd4;
+  background: var(--paper);
   color: var(--ink);
 }
 

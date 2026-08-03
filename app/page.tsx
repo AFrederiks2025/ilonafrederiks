@@ -339,7 +339,7 @@ export default function Home() {
           id="profieltekst"
           label="Profiel"
           description="Wie Ilona is en wat zij meebrengt"
-          tone="light"
+          tone="soft"
         >
         <section className="profileSection" aria-labelledby="profile-title">
           <div className="profileStatement" data-reveal>
@@ -376,7 +376,7 @@ export default function Home() {
           id="praktijk"
           label="In de praktijk"
           description="Een voorbeeld van persoonlijk klantadvies"
-          tone="soft"
+          tone="light"
         >
         <section className="practiceSection" aria-labelledby="practice-title">
           <div className="practiceHeading" data-reveal>
@@ -404,6 +404,7 @@ export default function Home() {
           id="ervaring"
           label="Werkervaring"
           description="Functies, verantwoordelijkheden en rolaccenten"
+          tone="soft"
         >
         <section className="experienceSection" aria-labelledby="experience-title">
           <div className="editorialHeading" data-reveal>
@@ -452,7 +453,7 @@ export default function Home() {
           id="beschikbaarheid"
           label="Ambitie & beschikbaarheid"
           description="Gewenste functie, uren en persoonlijke voorkeuren"
-          tone="soft"
+          tone="light"
         >
         <section className="ambitionSection" aria-labelledby="ambition-title">
           <div className="ambitionStory" data-reveal>
@@ -597,6 +598,7 @@ export default function Home() {
           id="opleiding"
           label="Opleiding"
           description="Trainingen, certificaten en creatieve basis"
+          tone="soft"
         >
         <section className="educationSection" aria-labelledby="education-title">
           <div className="educationHeading" data-reveal>
