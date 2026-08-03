@@ -56,9 +56,10 @@ test("server-renders Ilona's complete portfolio page and metadata", async () => 
   assert.match(html, /property="og:image"[^>]*content="https:\/\/www\.ilonafrederiks\.nl\/og\.png"/i);
   assert.match(html, /rel="canonical"[^>]*href="https:\/\/www\.ilonafrederiks\.nl\/"/i);
   assert.match(html, /id="portfolio"/i);
-  assert.match(html, /<details(?=[^>]*id="profieltekst")(?=[^>]*class="sectionAccordion sectionAccordion--dark")/i);
+  assert.match(html, /<details(?=[^>]*id="profieltekst")(?=[^>]*class="sectionAccordion sectionAccordion--light")/i);
   assert.match(html, /<details(?=[^>]*id="ervaring")(?=[^>]*class="sectionAccordion sectionAccordion--light")/i);
   assert.match(html, /<details(?=[^>]*id="talenten")(?=[^>]*class="sectionAccordion sectionAccordion--soft")/i);
+  assert.match(html, /<details(?=[^>]*id="beschikbaarheid")(?=[^>]*class="sectionAccordion sectionAccordion--soft")/i);
   assert.match(html, /Ambitie &amp; beschikbaarheid/i);
   assert.match(html, /Wie Ilona is en wat zij meebrengt/i);
   assert.doesNotMatch(html, /<details[^>]*class="sectionAccordion[^"]*"[^>]*\bopen\b/i);
@@ -129,7 +130,7 @@ test("server-renders Ilona's complete portfolio page and metadata", async () => 
 
   const hero = html.slice(html.indexOf('class="heroIntroduction"'), html.indexOf('class="profileSection"'));
   assert.match(hero, /href="#ervaring"[^>]*>\s*Bekijk mijn ervaring/i);
-  assert.match(hero, /href="https:\/\/wa\.me\/31657177997"[^>]*>[\s\S]*?Maak kennis met Ilona/i);
+  assert.match(hero, /href="https:\/\/wa\.me\/31657177997"[^>]*>[\s\S]*?Chat met Ilona via WhatsApp/i);
   assert.match(hero, /Privé ben ik al tien jaar getrouwd met Anton/i);
   assert.match(hero, /zoon: Benjamin[\s\S]*van 4 jaar/i);
   assert.doesNotMatch(hero, /Bekijk portfolio|WhatsApp met Ilona/i);
@@ -200,7 +201,8 @@ test("keeps interaction, accessibility and content safeguards in source", async 
   assert.match(page, /16–24 uur per week/);
   assert.match(page, /dateTime="2026-08-17"/);
   assert.match(page, /Bekijk mijn ervaring/);
-  assert.match(page, /Maak kennis met Ilona/);
+  assert.match(page, /Chat met Ilona via WhatsApp/);
+  assert.doesNotMatch(page, /Maak kennis met Ilona/);
   assert.match(page, /Persoonlijke aandacht met gevoel voor stijl/);
   assert.match(page, /Wanneer een klant weer gaat stralen/);
   assert.match(page, /Groeien binnen de winkel/);

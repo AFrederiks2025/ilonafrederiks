@@ -314,7 +314,7 @@ export default function Home() {
                   target="_blank"
                   rel="noreferrer"
                 >
-                  Maak kennis met Ilona <ArrowIcon />
+                  Chat met Ilona via WhatsApp <ArrowIcon />
                 </a>
               </div>
             </div>
@@ -339,11 +339,11 @@ export default function Home() {
           id="profieltekst"
           label="Profiel"
           description="Wie Ilona is en wat zij meebrengt"
-          tone="dark"
+          tone="light"
         >
         <section className="profileSection" aria-labelledby="profile-title">
           <div className="profileStatement" data-reveal>
-            <p className="eyebrow eyebrowLight">Profiel</p>
+            <p className="eyebrow">Profiel</p>
             <h2 id="profile-title">Persoonlijke aandacht met gevoel voor stijl</h2>
           </div>
           <div className="profileCopy" data-reveal data-reveal-delay="1">
@@ -452,11 +452,11 @@ export default function Home() {
           id="beschikbaarheid"
           label="Ambitie & beschikbaarheid"
           description="Gewenste functie, uren en persoonlijke voorkeuren"
-          tone="dark"
+          tone="soft"
         >
         <section className="ambitionSection" aria-labelledby="ambition-title">
           <div className="ambitionStory" data-reveal>
-            <p className="eyebrow eyebrowLight">Ambitie</p>
+            <p className="eyebrow">Ambitie</p>
             <h2 id="ambition-title">Groeien binnen de winkel</h2>
             <p className="ambitionLead">
               Ilona zoekt een vaste functie als verkoopmedewerker in een kledingwinkel. Op termijn
@@ -469,7 +469,7 @@ export default function Home() {
               wil zij verder ontwikkelen in de winkel.
             </p>
             <div className="personalNote">
-              <p className="eyebrow eyebrowLight">Persoonlijk</p>
+              <p className="eyebrow">Persoonlijk</p>
               <h3>Mode, muziek en verbinding</h3>
               <p>
                 Mode en muziek lopen als een rode draad door Ilona’s leven. Ze is dagelijks bezig
@@ -658,7 +658,7 @@ export default function Home() {
                 target="_blank"
                 rel="noreferrer"
               >
-                Maak kennis met Ilona <ArrowIcon />
+                Chat met Ilona via WhatsApp <ArrowIcon />
               </a>
               <a className="contactCta contactCtaSecondary" href="/Ilona-Frederiks-CV.pdf" download>
                 Download cv als pdf <span aria-hidden="true">↓</span>
