@@ -699,7 +699,7 @@ footer {
 .portfolioSection {
   width: 100%;
   padding-inline: max(2.5rem, calc((100% - 1440px) / 2));
-  background: var(--paper);
+  background: #eadfd4;
   border-block: 1px solid var(--line);
 }
 
@@ -1119,13 +1119,13 @@ footer {
 }
 
 .ambitionSection {
-  display: grid;
-  grid-template-columns: minmax(0, 0.85fr) minmax(24rem, 1.15fr);
-  gap: clamp(4rem, 9vw, 10rem);
-  align-items: start;
   padding: clamp(7rem, 10vw, 11rem) max(2.5rem, calc((100% - 1440px) / 2));
   background: var(--paper);
   color: var(--ink);
+}
+
+.ambitionStory {
+  max-width: 60rem;
 }
 
 .ambitionStory h2 {
@@ -1169,7 +1169,14 @@ footer {
   color: #5d504a;
 }
 
+.availabilitySection {
+  padding: clamp(5rem, 8vw, 8rem) max(2.5rem, calc((100% - 1440px) / 2));
+  background: #eadfd4;
+}
+
 .availabilityPanel {
+  width: min(100%, 78rem);
+  margin: 0 auto;
   padding: clamp(2rem, 4vw, 4rem);
   background: var(--paper);
   color: var(--ink);
@@ -1328,7 +1335,7 @@ footer {
 
 .quotesSection {
   padding: clamp(7rem, 10vw, 10rem) max(2.5rem, calc((100% - 1440px) / 2));
-  background: #eadfd4;
+  background: var(--paper);
   border-block: 1px solid var(--line);
 }
 

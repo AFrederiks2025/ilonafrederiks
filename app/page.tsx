@@ -450,9 +450,9 @@ export default function Home() {
         </SectionAccordion>
 
         <SectionAccordion
-          id="beschikbaarheid"
-          label="Ambitie & beschikbaarheid"
-          description="Gewenste functie, uren en persoonlijke voorkeuren"
+          id="ambitie"
+          label="Ambitie"
+          description="Gewenste functie en ontwikkeling"
           tone="light"
         >
         <section className="ambitionSection" aria-labelledby="ambition-title">
@@ -478,10 +478,19 @@ export default function Home() {
               </p>
             </div>
           </div>
+        </section>
+        </SectionAccordion>
 
+        <SectionAccordion
+          id="beschikbaarheid"
+          label="Beschikbaarheid"
+          description="Uren, werkdagen, regio en startdatum"
+          tone="soft"
+        >
+        <section className="availabilitySection" aria-labelledby="availability-detail-title">
           <div className="availabilityPanel" data-reveal data-reveal-delay="1">
             <p className="eyebrow">Beschikbaarheid</p>
-            <h3>Een persoonlijke winkel past het best.</h3>
+            <h3 id="availability-detail-title">Een persoonlijke winkel past het best.</h3>
             <dl>
               <div><dt>Gewenste functie</dt><dd>Verkoopmedewerker in een kledingwinkel</dd></div>
               <div><dt>Dienstverband</dt><dd>Vaste baan</dd></div>
@@ -502,7 +511,7 @@ export default function Home() {
           id="talenten"
           label="Talenten"
           description="Drie krachtlijnen uit de Jane Talentenrapportage"
-          tone="soft"
+          tone="light"
         >
         <section className="quotesSection" aria-labelledby="quotes-title">
           <div className="quotesHeading" data-reveal>
@@ -533,6 +542,7 @@ export default function Home() {
           id="portfolio"
           label="Portfolio"
           description="Vier verzorgde beautylooks"
+          tone="soft"
         >
         <section className="portfolioSection" aria-labelledby="portfolio-title">
           <div className="editorialHeading" data-reveal>
@@ -598,7 +608,7 @@ export default function Home() {
           id="opleiding"
           label="Opleiding"
           description="Trainingen, certificaten en creatieve basis"
-          tone="soft"
+          tone="light"
         >
         <section className="educationSection" aria-labelledby="education-title">
           <div className="educationHeading" data-reveal>
@@ -628,6 +638,7 @@ export default function Home() {
           id="connect"
           label="Connect"
           description="LinkedIn en professioneel profiel"
+          tone="soft"
         >
         <section className="socialSection" aria-labelledby="social-title">
           <div data-reveal>
