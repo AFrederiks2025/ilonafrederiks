@@ -270,12 +270,12 @@ export default function Home() {
             </div>
             <div className="heroMobilePortrait">
               <img
-                src="/ilona-frederiks-640.jpg"
-                srcSet="/ilona-frederiks-640.jpg 640w, /ilona-frederiks-1000.jpg 1000w"
+                src="/hero-editorial-1200.jpg"
+                srcSet="/hero-editorial-1200.jpg 1200w, /hero-editorial-2200.jpg 2200w"
                 sizes="92vw"
                 alt="Portret van Ilona Frederiks"
-                width="640"
-                height="853"
+                width="1200"
+                height="631"
                 fetchPriority="high"
               />
             </div>

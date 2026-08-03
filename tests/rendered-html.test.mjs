@@ -115,7 +115,7 @@ test("server-renders Ilona's complete portfolio page and metadata", async () => 
   assert.doesNotMatch(html, /ilona-be-you-tiful\.jpg/i);
   assert.doesNotMatch(html, /be-you-tiful-logo|bruidsaccessoires|haarstyling-tools|mobile-beauty-kit/i);
   assert.doesNotMatch(html, /kleurpaletten|lip-edit|eye-detail-kit|finishing-details/i);
-  assert.match(html, /ilona-frederiks-1000\.jpg/i);
+  assert.doesNotMatch(html, /ilona-frederiks-(?:640|1000)\.jpg/i);
   assert.match(html, /hero-editorial-1200\.jpg/i);
   assert.match(html, /hero-editorial-2200\.jpg/i);
   assert.match(html, /Persoonlijke aandacht met gevoel voor stijl/i);
@@ -204,6 +204,13 @@ test("keeps interaction, accessibility and content safeguards in source", async 
   assert.doesNotMatch(page, /className="heroDesktopIdentity"/);
   assert.doesNotMatch(page, /className="heroDesktopPortrait"/);
   assert.match(page, /className="heroMobileArtwork"/);
+  const mobileHero = page.slice(
+    page.indexOf('className="heroMobileArtwork"'),
+    page.indexOf('className="heroIntroduction"'),
+  );
+  assert.match(mobileHero, /hero-editorial-1200\.jpg/i);
+  assert.match(mobileHero, /hero-editorial-2200\.jpg/i);
+  assert.doesNotMatch(mobileHero, /ilona-frederiks-(?:640|1000)\.jpg/i);
   assert.match(page, /<details className="portfolioDisclosure">/);
   assert.match(page, /<summary>/);
   assert.match(page, /loading="lazy"/);
@@ -247,6 +254,7 @@ test("keeps interaction, accessibility and content safeguards in source", async 
   assert.match(css, /\.ambitionSection/);
   assert.match(css, /\.sectionAccordion/);
   assert.match(css, /\.sectionAccordionSummaryText strong\s*\{[^}]*white-space:\s*nowrap/);
+  assert.match(css, /\.heroMobilePortrait img\s*\{[^}]*object-position:\s*100% 50%/);
   assert.match(css, /\.sectionAccordion\s*\{[^}]*background:\s*var\(--paper\)/);
   assert.match(css, /\.sectionAccordion--soft\s*\{[^}]*background:\s*#eadfd4/);
   assert.match(css, /\.profileSection\s*\{[^}]*background:\s*#eadfd4/);
