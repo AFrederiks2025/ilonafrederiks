@@ -246,6 +246,7 @@ test("keeps interaction, accessibility and content safeguards in source", async 
   assert.match(css, /\.practiceSection/);
   assert.match(css, /\.ambitionSection/);
   assert.match(css, /\.sectionAccordion/);
+  assert.match(css, /\.sectionAccordionSummaryText strong\s*\{[^}]*white-space:\s*nowrap/);
   assert.match(css, /\.sectionAccordion\s*\{[^}]*background:\s*var\(--paper\)/);
   assert.match(css, /\.sectionAccordion--soft\s*\{[^}]*background:\s*#eadfd4/);
   assert.match(css, /\.profileSection\s*\{[^}]*background:\s*#eadfd4/);

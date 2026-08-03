@@ -620,6 +620,7 @@ footer {
   font-size: clamp(1.8rem, 3vw, 3rem);
   font-weight: 400;
   letter-spacing: -0.035em;
+  white-space: nowrap;
 }
 
 .sectionAccordionSummaryText small {
