@@ -301,6 +301,10 @@ export default function Home() {
                 Met mijn gevoel voor mode, styling en persoonlijk contact zorg ik voor oprechte
                 aandacht én een verzorgde winkelervaring.
               </p>
+              <p className="heroPersonalIntro">
+                Privé ben ik al tien jaar getrouwd met Anton. Samen hebben we een zoon: Benjamin
+                van 4 jaar.
+              </p>
               <p className="heroAvailabilityLine">Beschikbaar voor 16–24 uur per week in Zwolle en omgeving.</p>
               <div className="heroCtas">
                 <a className="primaryButton" href="#ervaring">Bekijk mijn ervaring <ArrowIcon /></a>
@@ -470,10 +474,6 @@ export default function Home() {
               <p>
                 Mode en muziek lopen als een rode draad door Ilona’s leven. Ze is dagelijks bezig
                 met kleding, styling en trends en brengt in groepen graag mensen samen.
-              </p>
-              <p>
-                Ilona is tien jaar getrouwd met Anton. Samen hebben zij een zoon, Benjamin, van 4
-                jaar.
               </p>
             </div>
           </div>

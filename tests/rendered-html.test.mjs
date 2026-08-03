@@ -130,6 +130,8 @@ test("server-renders Ilona's complete portfolio page and metadata", async () => 
   const hero = html.slice(html.indexOf('class="heroIntroduction"'), html.indexOf('class="profileSection"'));
   assert.match(hero, /href="#ervaring"[^>]*>\s*Bekijk mijn ervaring/i);
   assert.match(hero, /href="https:\/\/wa\.me\/31657177997"[^>]*>[\s\S]*?Maak kennis met Ilona/i);
+  assert.match(hero, /Privé ben ik al tien jaar getrouwd met Anton/i);
+  assert.match(hero, /zoon: Benjamin[\s\S]*van 4 jaar/i);
   assert.doesNotMatch(hero, /Bekijk portfolio|WhatsApp met Ilona/i);
 
   const availability = html.slice(html.indexOf('class="ambitionSection"'), html.indexOf('class="quotesSection"'));
@@ -143,14 +145,15 @@ test("server-renders Ilona's complete portfolio page and metadata", async () => 
   assert.match(availability, /Startdatum[\s\S]*datetime="2026-08-17"[^>]*>17 augustus 2026/i);
   assert.match(availability, /Voorkeur[\s\S]*Een kleine, persoonlijke kledingwinkel/i);
   assert.match(availability, /Ambitie[\s\S]*Doorgroeien richting leidinggevende/i);
+  assert.doesNotMatch(availability, /getrouwd met Anton|Benjamin/i);
 
   const corpus = html;
   assert.doesNotMatch(corpus, /\b(?:BSN|geboortedatum)\b/i);
   assert.doesNotMatch(corpus, /\b\d{4}\s?[A-Z]{2}\b/);
   assert.doesNotMatch(corpus, /\b(?:300\s+workshops|100\s+klanten)\b/i);
   assert.doesNotMatch(corpus, /["']?(?:birthDate|address|children|spouse|taxID)["']?\s*:/i);
-  assert.match(corpus, /Ilona is tien jaar getrouwd met Anton/i);
-  assert.match(corpus, /zoon, Benjamin, van 4 jaar/i);
+  assert.match(corpus, /Privé ben ik al tien jaar getrouwd met Anton/i);
+  assert.match(corpus, /zoon: Benjamin[\s\S]*van 4 jaar/i);
   assert.match(corpus, /href="https:\/\/www\.ewvo\.nl\/"[^>]*>[\s\S]*Anton Frederiks · EWVO\.nl/i);
   assert.doesNotMatch(corpus, /\bgeloof\b/i);
 

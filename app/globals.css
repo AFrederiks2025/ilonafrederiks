@@ -418,6 +418,17 @@ footer {
   line-height: 1.75;
 }
 
+.heroPersonalIntro {
+  max-width: 34rem;
+  margin: 1.35rem 0 0;
+  padding-left: 1rem;
+  border-left: 1px solid var(--champagne);
+  color: var(--wine);
+  font-family: var(--serif);
+  font-size: 1.05rem;
+  line-height: 1.55;
+}
+
 .heroAvailabilityLine {
   max-width: 34rem;
   margin: 1.25rem 0 0;
