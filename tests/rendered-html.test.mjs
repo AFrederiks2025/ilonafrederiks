@@ -102,7 +102,8 @@ test("server-renders Ilona's complete portfolio page and metadata", async () => 
   assert.doesNotMatch(html, /be-you-tiful-logo|bruidsaccessoires|haarstyling-tools|mobile-beauty-kit/i);
   assert.doesNotMatch(html, /kleurpaletten|lip-edit|eye-detail-kit|finishing-details/i);
   assert.match(html, /ilona-frederiks-1000\.jpg/i);
-  assert.doesNotMatch(html, /hero-editorial-(?:1200|2200)\.jpg/i);
+  assert.match(html, /hero-editorial-1200\.jpg/i);
+  assert.match(html, /hero-editorial-2200\.jpg/i);
   assert.match(html, /Persoonlijke aandacht met gevoel voor stijl/i);
   assert.match(html, /Wat Ilona meebrengt/i);
   assert.match(html, /Persoonlijk klantadvies/i);
@@ -180,9 +181,10 @@ test("keeps interaction, accessibility and content safeguards in source", async 
   assert.match(page, /<main id="main-content" tabIndex=\{-1\}>/);
   assert.match(page, /alt="Portret van Ilona Frederiks"/);
   assert.match(page, /className="heroDesktopArtwork"/);
-  assert.match(page, /className="heroDesktopIdentity"/);
-  assert.match(page, /className="heroDesktopPortrait"/);
-  assert.doesNotMatch(page, /hero-editorial-(?:1200|2200)\.jpg/i);
+  assert.match(page, /hero-editorial-1200\.jpg/i);
+  assert.match(page, /hero-editorial-2200\.jpg/i);
+  assert.doesNotMatch(page, /className="heroDesktopIdentity"/);
+  assert.doesNotMatch(page, /className="heroDesktopPortrait"/);
   assert.match(page, /className="heroMobileArtwork"/);
   assert.match(page, /<details className="portfolioDisclosure">/);
   assert.match(page, /<summary>/);

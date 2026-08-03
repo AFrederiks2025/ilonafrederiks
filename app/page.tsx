@@ -249,22 +249,15 @@ export default function Home() {
           <h1 className="srOnly" id="hero-title">Ilona Frederiks</h1>
 
           <div className="heroDesktopArtwork" data-reveal>
-            <div className="heroDesktopIdentity">
-              <p className="heroDesktopName"><span>Ilona</span><span>Frederiks</span></p>
-              <p className="heroDesktopDisciplines">Verkoopmedewerker mode · Klantadvies · Styling</p>
-              <div className="heroDesktopLocation"><span /><p>Zwolle</p><span /></div>
-            </div>
-            <div className="heroDesktopPortrait">
-              <img
-                src="/ilona-frederiks-1000.jpg"
-                srcSet="/ilona-frederiks-640.jpg 640w, /ilona-frederiks-1000.jpg 1000w"
-                sizes="(max-width: 1120px) 45vw, 720px"
-                alt="Portret van Ilona Frederiks"
-                width="1000"
-                height="1333"
-                fetchPriority="high"
-              />
-            </div>
+            <img
+              src="/hero-editorial-2200.jpg"
+              srcSet="/hero-editorial-1200.jpg 1200w, /hero-editorial-2200.jpg 2200w"
+              sizes="(max-width: 1700px) calc(100vw - 5rem), 1620px"
+              alt="Ilona Frederiks — styling, verkoop en performance in Zwolle"
+              width="2200"
+              height="1157"
+              fetchPriority="high"
+            />
           </div>
 
           <div className="heroMobileArtwork" data-reveal>
