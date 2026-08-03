@@ -478,6 +478,10 @@ export default function Home() {
                 Mode en muziek lopen als een rode draad door Ilona’s leven. Ze is dagelijks bezig
                 met kleding, styling en trends en brengt in groepen graag mensen samen.
               </p>
+              <p>
+                Ilona is tien jaar getrouwd met Anton. Samen hebben zij een zoon, Benjamin, van 4
+                jaar.
+              </p>
             </div>
           </div>
 
@@ -679,7 +683,15 @@ export default function Home() {
             </a>
           </address>
           <div className="footerLine">
-            <span>Ilona Frederiks · Zwolle</span>
+            <div className="footerMeta">
+              <span>Ilona Frederiks · Zwolle</span>
+              <span className="siteCredit">
+                Website gebouwd door{" "}
+                <a href="https://www.ewvo.nl/" target="_blank" rel="noreferrer">
+                  Anton Frederiks · EWVO.nl <span aria-hidden="true">↗</span>
+                </a>
+              </span>
+            </div>
             <a href="#profiel">Terug naar boven ↑</a>
           </div>
         </footer>

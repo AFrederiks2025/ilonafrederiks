@@ -147,7 +147,9 @@ test("server-renders Ilona's complete portfolio page and metadata", async () => 
   assert.doesNotMatch(corpus, /\b\d{4}\s?[A-Z]{2}\b/);
   assert.doesNotMatch(corpus, /\b(?:300\s+workshops|100\s+klanten)\b/i);
   assert.doesNotMatch(corpus, /["']?(?:birthDate|address|children|spouse|taxID)["']?\s*:/i);
-  assert.doesNotMatch(corpus, /\b(?:kind|zoon|dochter|man|echtgenoot)\b.{0,40}\b\d{1,3}\s*(?:jaar|jaren)\b/is);
+  assert.match(corpus, /Ilona is tien jaar getrouwd met Anton/i);
+  assert.match(corpus, /zoon, Benjamin, van 4 jaar/i);
+  assert.match(corpus, /href="https:\/\/www\.ewvo\.nl\/"[^>]*>[\s\S]*Anton Frederiks · EWVO\.nl/i);
   assert.doesNotMatch(corpus, /\bgeloof\b/i);
 
   const sissyBoyPosition = html.indexOf("Sissy-Boy");

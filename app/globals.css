@@ -1752,6 +1752,17 @@ footer {
   text-transform: uppercase;
 }
 
+.footerMeta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.5rem;
+  align-items: center;
+}
+
+.siteCredit a {
+  color: rgba(252, 249, 244, 0.78);
+}
+
 .footerLine a:hover {
   color: var(--paper);
 }
@@ -2379,6 +2390,11 @@ footer {
   }
 
   .footerLine {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .footerMeta {
     align-items: flex-start;
     flex-direction: column;
   }
