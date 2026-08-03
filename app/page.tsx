@@ -488,6 +488,7 @@ export default function Home() {
               <div><dt>Voorkeursdagen</dt><dd>Maandag, dinsdag en donderdag</dd></div>
               <div><dt>Weekend</dt><dd>Alleen bij hoge uitzondering</dd></div>
               <div><dt>Regio</dt><dd>Maximaal circa 30 minuten reizen vanaf Zwolle</dd></div>
+              <div><dt>Rijbewijs</dt><dd>In bezit</dd></div>
               <div><dt>Startdatum</dt><dd><time dateTime="2026-08-17">17 augustus 2026</time></dd></div>
               <div><dt>Voorkeur</dt><dd>Een kleine, persoonlijke kledingwinkel</dd></div>
               <div><dt>Ambitie</dt><dd>Doorgroeien richting leidinggevende</dd></div>

@@ -139,6 +139,7 @@ test("server-renders Ilona's complete portfolio page and metadata", async () => 
   assert.match(availability, /Voorkeursdagen[\s\S]*Maandag, dinsdag en donderdag/i);
   assert.match(availability, /Weekend[\s\S]*Alleen bij hoge uitzondering/i);
   assert.match(availability, /Regio[\s\S]*Maximaal circa 30 minuten reizen vanaf Zwolle/i);
+  assert.match(availability, /Rijbewijs[\s\S]*In bezit/i);
   assert.match(availability, /Startdatum[\s\S]*datetime="2026-08-17"[^>]*>17 augustus 2026/i);
   assert.match(availability, /Voorkeur[\s\S]*Een kleine, persoonlijke kledingwinkel/i);
   assert.match(availability, /Ambitie[\s\S]*Doorgroeien richting leidinggevende/i);
