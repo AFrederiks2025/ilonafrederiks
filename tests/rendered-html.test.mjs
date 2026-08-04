@@ -86,6 +86,8 @@ test("server-renders Ilona's complete portfolio page and metadata", async () => 
   assert.match(html, /Verkoopmedewerker mode · klantadvies · styling/i);
   assert.match(html, /Mode verkopen begint met iemand echt zien\./i);
   assert.match(html, /Ik ben Ilona: een enthousiaste en gastvrije verkoopmedewerker/i);
+  assert.match(html, /Shoeby, Sissy-Boy en als ondernemer/i);
+  assert.match(html, /Goed advies begint voor mij met oprechte aandacht/i);
   assert.match(html, /Beschikbaar voor 16–24 uur per week in Zwolle en omgeving\./i);
   assert.match(html, /Beschikbaar vanaf 17 augustus 2026/i);
   assert.match(html, /16–24 uur per week/i);
@@ -164,8 +166,10 @@ test("server-renders Ilona's complete portfolio page and metadata", async () => 
   const hero = html.slice(html.indexOf('class="heroIntroduction"'), html.indexOf('class="profileSection"'));
   assert.match(hero, /href="#ervaring"[^>]*>\s*Bekijk mijn ervaring/i);
   assert.match(hero, /href="https:\/\/wa\.me\/31657177997"[^>]*>[\s\S]*?Chat met Ilona via WhatsApp/i);
-  assert.match(hero, /Privé ben ik al tien jaar getrouwd met Anton/i);
-  assert.match(hero, /zoon: Benjamin[\s\S]*van 4 jaar/i);
+  assert.match(hero, /Ook buiten mijn werk staan mensen en verbinding centraal/i);
+  assert.match(hero, /tien jaar getrouwd[\s\S]*met Anton/i);
+  assert.match(hero, /trotse ouders van Benjamin[\s\S]*\(4\)/i);
+  assert.doesNotMatch(hero, /Privé ben ik/i);
   assert.doesNotMatch(hero, /Bekijk portfolio|WhatsApp met Ilona/i);
 
   const availability = html.slice(html.indexOf('id="beschikbaarheid"'), html.indexOf('id="portfolio"'));
@@ -186,8 +190,9 @@ test("server-renders Ilona's complete portfolio page and metadata", async () => 
   assert.doesNotMatch(corpus, /\b\d{4}\s?[A-Z]{2}\b/);
   assert.doesNotMatch(corpus, /\b(?:300\s+workshops|100\s+klanten)\b/i);
   assert.doesNotMatch(corpus, /["']?(?:birthDate|address|children|spouse|taxID)["']?\s*:/i);
-  assert.match(corpus, /Privé ben ik al tien jaar getrouwd met Anton/i);
-  assert.match(corpus, /zoon: Benjamin[\s\S]*van 4 jaar/i);
+  assert.match(corpus, /Ook buiten mijn werk staan mensen en verbinding centraal/i);
+  assert.match(corpus, /tien jaar getrouwd[\s\S]*met Anton/i);
+  assert.match(corpus, /trotse ouders van Benjamin[\s\S]*\(4\)/i);
   assert.match(corpus, /href="https:\/\/www\.ewvo\.nl\/"[^>]*>[\s\S]*Anton Frederiks · EWVO\.nl/i);
   assert.doesNotMatch(corpus, /\bgeloof\b/i);
 

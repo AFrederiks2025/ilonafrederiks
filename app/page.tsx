@@ -340,16 +340,16 @@ export default function Home() {
             <div className="heroStory">
               <p className="heroIntro">
                 Ik ben Ilona: een enthousiaste en gastvrije verkoopmedewerker met ervaring bij
-                Shoeby, Sissy-Boy en binnen mijn eigen onderneming. Ik help klanten graag bij het
-                vinden van kleding waarin zij zich mooi, zelfverzekerd en prettig voelen.
+                Shoeby, Sissy-Boy en als ondernemer. Met gevoel voor mode en styling help ik klanten
+                kleding te vinden waarin zij zich mooi, zelfverzekerd en prettig voelen.
               </p>
               <p className="heroIntroSecondary">
-                Met mijn gevoel voor mode, styling en persoonlijk contact zorg ik voor oprechte
-                aandacht én een verzorgde winkelervaring.
+                Goed advies begint voor mij met oprechte aandacht: luisteren, meedenken en zorgen
+                voor een persoonlijke, verzorgde winkelervaring.
               </p>
               <p className="heroPersonalIntro">
-                Privé ben ik al tien jaar getrouwd met Anton. Samen hebben we een zoon: Benjamin
-                van 4 jaar.
+                Ook buiten mijn werk staan mensen en verbinding centraal. Ik ben tien jaar getrouwd
+                met Anton en samen zijn we de trotse ouders van Benjamin (4).
               </p>
               <p className="heroAvailabilityLine">Beschikbaar voor 16–24 uur per week in Zwolle en omgeving.</p>
               <div className="heroCtas">
