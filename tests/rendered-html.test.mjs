@@ -60,12 +60,12 @@ test("server-renders Ilona's complete portfolio page and metadata", async () => 
     ["profieltekst", "soft"],
     ["praktijk", "light"],
     ["ervaring", "soft"],
+    ["communicatiestijl", "light"],
+    ["talenten", "soft"],
     ["ambitie", "light"],
     ["beschikbaarheid", "soft"],
-    ["talenten", "light"],
-    ["portfolio", "soft"],
-    ["opleiding", "light"],
-    ["connect", "soft"],
+    ["portfolio", "light"],
+    ["opleiding", "soft"],
   ];
   for (const [id, tone] of sectionTones) {
     assert.match(
@@ -126,14 +126,34 @@ test("server-renders Ilona's complete portfolio page and metadata", async () => 
   assert.match(html, /Positieve teamenergie/i);
   assert.match(html, /Wanneer een klant weer gaat stralen/i);
   assert.match(html, /Als iemand in de spiegel kijkt en je ziet de sprankeling terugkomen/i);
+  assert.match(html, /Hoe ik contact maak, adviseer en samenwerk/i);
+  assert.match(html, /Warm, enthousiast en gericht op verbinding\./i);
+  assert.match(html, /Mijn DISC-profiel laat zien dat ik van nature mensgericht en enthousiast/i);
+  assert.match(html, /Toegankelijk/i);
+  assert.match(html, /Enthousiasmerend/i);
+  assert.match(html, /Persoonlijk/i);
+  assert.match(html, /Verbindend/i);
+  assert.match(html, /Mijn kracht ligt niet in iemand onder druk zetten/i);
+  assert.match(html, /Deze beschrijving is gebaseerd op mijn persoonlijke DISC-profiel/i);
+  assert.match(html, /Wat mij motiveert en waar mijn natuurlijke kracht ligt/i);
+  assert.match(html, /Kansen zien, waarde zichtbaar maken en kwaliteit vasthouden\./i);
+  assert.match(html, /Mijn JANE Talentenrapportage laat een combinatie zien/i);
+  assert.match(html, /Routinetalent, Exploitatietalent en[\s\S]*Etaleertalent, alle drie met 80%/i);
+  assert.match(html, /Vertaaltalent en Scopetalent volgen met 70%/i);
+  assert.match(html, /Waarde zichtbaar maken/i);
+  assert.match(html, /Commerciële mogelijkheden zien/i);
+  assert.match(html, /Kwaliteit consequent vasthouden/i);
+  assert.match(html, /Wensen concreet maken/i);
+  assert.match(html, /Openstaan voor vernieuwing/i);
+  assert.match(html, /De volledige rapportage[\s\S]*is op verzoek beschikbaar/i);
+  assert.doesNotMatch(html, /Drie krachtlijnen uit de Jane Talentenrapportage/i);
+  assert.doesNotMatch(html, /Wat haar werk typeert\./i);
   assert.match(html, /Groeien binnen de winkel/i);
   assert.match(html, /leidinggevende rol[\s\S]*binnen een worshipband/i);
   assert.match(html, /natuurlijke leiderschap/i);
   assert.match(html, /Doorgroeien richting leidinggevende/i);
   assert.match(html, /Mode, muziek en verbinding/i);
-  assert.match(html, /Jane Talentenrapportage/i);
-  assert.match(html, /geregistreerd advies- en trainingsproduct/i);
-  const talents = html.slice(html.indexOf('id="talenten"'), html.indexOf('class="portfolioSection"'));
+  const talents = html.slice(html.indexOf('id="talenten"'), html.indexOf('id="ambitie"'));
   assert.doesNotMatch(talents, /2026/i);
   assert.match(html, /href="\/Ilona-Frederiks-CV\.pdf"[^>]*download/i);
   assert.doesNotMatch(html, /Portfolio volgt|Instagram-profiel wordt later toegevoegd/i);
@@ -148,7 +168,7 @@ test("server-renders Ilona's complete portfolio page and metadata", async () => 
   assert.match(hero, /zoon: Benjamin[\s\S]*van 4 jaar/i);
   assert.doesNotMatch(hero, /Bekijk portfolio|WhatsApp met Ilona/i);
 
-  const availability = html.slice(html.indexOf('class="ambitionSection"'), html.indexOf('class="quotesSection"'));
+  const availability = html.slice(html.indexOf('id="beschikbaarheid"'), html.indexOf('id="portfolio"'));
   assert.match(availability, /Gewenste functie[\s\S]*Verkoopmedewerker in een kledingwinkel/i);
   assert.match(availability, /Dienstverband[\s\S]*Vaste baan/i);
   assert.match(availability, /Beschikbaar[\s\S]*16–24 uur per week/i);
@@ -175,6 +195,18 @@ test("server-renders Ilona's complete portfolio page and metadata", async () => 
   const danceTeacherPosition = html.indexOf("Dansworkshops op scholen");
   assert.ok(sissyBoyPosition > -1 && danceTeacherPosition > -1);
   assert.ok(sissyBoyPosition < danceTeacherPosition, "Sissy-Boy moet voor Dansdocent staan");
+
+  const experiencePosition = html.indexOf('id="ervaring"');
+  const communicationPosition = html.indexOf('id="communicatiestijl"');
+  const talentsPosition = html.indexOf('id="talenten"');
+  const ambitionPosition = html.indexOf('id="ambitie"');
+  const availabilityPosition = html.indexOf('id="beschikbaarheid"');
+  const portfolioPosition = html.indexOf('id="portfolio"');
+  assert.ok(experiencePosition < communicationPosition, "communicatiestijl volgt na werkervaring");
+  assert.ok(communicationPosition < talentsPosition, "talenten volgen na communicatiestijl");
+  assert.ok(talentsPosition < ambitionPosition, "ambitie volgt na talenten");
+  assert.ok(ambitionPosition < availabilityPosition, "beschikbaarheid volgt na ambitie");
+  assert.ok(availabilityPosition < portfolioPosition, "portfolio volgt na beschikbaarheid");
 
   const bootcampPosition = html.indexOf("Bruidskapsel Bootcamp");
   const approachPosition = html.indexOf("Approach of Life");
@@ -225,6 +257,10 @@ test("keeps interaction, accessibility and content safeguards in source", async 
   assert.doesNotMatch(page, /Maak kennis met Ilona/);
   assert.match(page, /Persoonlijke aandacht met gevoel voor stijl/);
   assert.match(page, /Wanneer een klant weer gaat stralen/);
+  assert.match(page, /Warm, enthousiast en gericht op verbinding\./);
+  assert.match(page, /Kansen zien, waarde zichtbaar maken en kwaliteit vasthouden\./);
+  assert.match(page, /persoonlijke DISC-profiel/);
+  assert.match(page, /JANE Talentenrapportage/);
   assert.match(page, /Groeien binnen de winkel/);
   assert.doesNotMatch(page, /jobTitle:\s*"Allround professional in styling, verkoop en performance"/i);
   assert.match(page, /Approach of Life/);
@@ -239,7 +275,8 @@ test("keeps interaction, accessibility and content safeguards in source", async 
   assert.match(layout, /metadataBase: new URL\("https:\/\/www\.ilonafrederiks\.nl"\)/);
   assert.match(menu, /aria-expanded=\{isOpen\}/);
   assert.match(menu, /#profieltekst/);
-  assert.match(menu, /#beschikbaarheid/);
+  assert.match(menu, /#communicatiestijl/);
+  assert.match(menu, /#talenten/);
   assert.match(accordion, /<details/);
   assert.match(accordion, /<summary>/);
   assert.doesNotMatch(accordion, /matchMedia/);
@@ -261,8 +298,9 @@ test("keeps interaction, accessibility and content safeguards in source", async 
   assert.match(css, /\.practiceSection\s*\{[^}]*background:\s*var\(--paper\)/);
   assert.match(css, /\.ambitionSection\s*\{[^}]*background:\s*var\(--paper\)/);
   assert.match(css, /\.availabilitySection\s*\{[^}]*background:\s*#eadfd4/);
-  assert.match(css, /\.quotesSection\s*\{[^}]*background:\s*var\(--paper\)/);
-  assert.match(css, /\.portfolioSection\s*\{[^}]*background:\s*#eadfd4/);
+  assert.match(css, /\.insightsSection\s*\{[^}]*background:\s*var\(--paper\)/);
+  assert.match(css, /\.insightsSection--soft\s*\{[^}]*background:\s*#eadfd4/);
+  assert.match(css, /\.portfolioSection\s*\{[^}]*background:\s*var\(--paper\)/);
   assert.match(css, /\.sectionAccordionIcon::after/);
   assert.match(css, /@media\s*\(prefers-reduced-motion:\s*reduce\)/);
 

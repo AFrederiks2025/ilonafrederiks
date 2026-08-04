@@ -152,18 +152,64 @@ const experience = [
   },
 ];
 
-const talentQuotes = [
+const communicationTraits = [
   {
-    quote: "Presenteert zichzelf, anderen en ideeën op een manier die aandacht trekt en waarde zichtbaar maakt.",
-    talent: "Etaleertalent · 80%",
+    title: "Toegankelijk",
+    description:
+      "Ik maak gemakkelijk contact en zorg ervoor dat klanten zich welkom voelen. Ook wanneer iemand nog niet precies weet wat zij zoekt, probeer ik het gesprek ontspannen te houden.",
   },
   {
-    quote: "Ziet relevante kansen en wil mogelijkheden doelgericht benutten om beweging en resultaat te creëren.",
-    talent: "Exploitatietalent · 80%",
+    title: "Enthousiasmerend",
+    description:
+      "Ik laat graag mogelijkheden zien en kan anderen meenemen in een combinatie, stijl of idee. Mijn enthousiasme is oprecht en helpt klanten om met andere ogen naar kleding te kijken.",
   },
   {
-    quote: "Werkt graag volgens een heldere aanpak en bewaakt daarin een stabiel, herkenbaar kwaliteitsniveau.",
-    talent: "Routinetalent · 80%",
+    title: "Persoonlijk",
+    description:
+      "Ik stem mijn communicatie af op de persoon die voor mij staat. De ene klant wil rustig rondkijken, terwijl een andere klant juist behoefte heeft aan actief advies.",
+  },
+  {
+    title: "Verbindend",
+    description:
+      "Ik vind een prettige samenwerking belangrijk en draag graag bij aan een positieve sfeer. Ik werk het liefst in een team waarin collega’s open communiceren en elkaar ondersteunen.",
+  },
+];
+
+const janeTalents = [
+  {
+    title: "Waarde zichtbaar maken",
+    description:
+      "Ik heb oog voor stijl, kleur, combinaties en details. Ik vind het mooi om mensen en producten zo te presenteren dat hun sterke kanten beter zichtbaar worden.",
+    basis:
+      "Dit is de praktische vertaling van mijn Etaleertalent: het aantrekkelijk zichtbaar maken van de unieke waarde van iets of iemand.",
+  },
+  {
+    title: "Commerciële mogelijkheden zien",
+    description:
+      "Ik herken kansen in een klantgesprek en denk mee over wat iemand nog meer zou kunnen helpen. Daarbij wil ik eruit halen wat erin zit, zonder dat het advies onpersoonlijk of geforceerd wordt.",
+    basis:
+      "Mijn Exploitatietalent gaat over kansen herkennen, benutten en omzetten in resultaat.",
+  },
+  {
+    title: "Kwaliteit consequent vasthouden",
+    description:
+      "Wanneer een aanpak goed werkt, kan ik deze zorgvuldig en consequent blijven toepassen. Ik vind het belangrijk dat klanten en collega’s weten wat zij aan mij hebben.",
+    basis:
+      "Mijn Routinetalent is verbonden aan volharding, geordend werken en het leveren van een stabiel kwaliteitsniveau.",
+  },
+  {
+    title: "Wensen concreet maken",
+    description:
+      "Ik help klanten om een brede of onduidelijke wens stap voor stap om te zetten in concrete keuzes. Daarbij probeer ik mijn advies duidelijk, toegankelijk en praktisch te houden.",
+    basis:
+      "Mijn Vertaaltalent gaat over het vereenvoudigen van complexiteit en het geven van heldere, begrijpelijke instructies.",
+  },
+  {
+    title: "Openstaan voor vernieuwing",
+    description:
+      "Ik sta open voor nieuwe collecties, trends en werkwijzen. Ik vind het interessant om nieuwe elementen te ontdekken en deze te verbinden aan wat al goed werkt.",
+    basis:
+      "Dit sluit aan bij mijn Scopetalent: een brede interesse, openstaan voor nieuwe dingen en vernieuwing integreren in bestaande werkwijzen.",
   },
 ];
 
@@ -225,9 +271,9 @@ export default function Home() {
         <nav className="desktopNav" aria-label="Secties">
           <a href="#profieltekst">Profiel</a>
           <a href="#ervaring">Ervaring</a>
-          <a href="#beschikbaarheid">Beschikbaarheid</a>
-          <a href="#portfolio">Portfolio</a>
+          <a href="#communicatiestijl">Communicatie</a>
           <a href="#talenten">Talenten</a>
+          <a href="#portfolio">Portfolio</a>
           <a href="#contact">Contact</a>
         </nav>
         <div className="headerActions">
@@ -450,6 +496,101 @@ export default function Home() {
         </SectionAccordion>
 
         <SectionAccordion
+          id="communicatiestijl"
+          label="Communicatiestijl"
+          description="Hoe ik contact maak, adviseer en samenwerk"
+          tone="light"
+        >
+        <section className="insightsSection" aria-labelledby="communication-title">
+          <div className="insightsHeading" data-reveal>
+            <p className="eyebrow">Mijn manier van communiceren</p>
+            <h2 id="communication-title">Warm, enthousiast en gericht op verbinding.</h2>
+            <div className="insightsIntro">
+              <p>
+                Mijn DISC-profiel laat zien dat ik van nature mensgericht en enthousiast
+                communiceer. Ik maak gemakkelijk contact, stel mensen graag op hun gemak en neem
+                anderen mee door mijn positieve energie.
+              </p>
+              <p>
+                Ik luister naar wat iemand vertelt, maar let ook op de sfeer en op wat iemand
+                misschien nog niet direct uitspreekt. In een klantgesprek probeer ik daarom niet zo
+                snel mogelijk tot een verkoop te komen. Ik wil eerst begrijpen wat iemand zoekt en
+                waarin zij zich prettig wil voelen.
+              </p>
+            </div>
+          </div>
+
+          <div className="insightsGrid insightsGrid--communication">
+            {communicationTraits.map((item, index) => (
+              <article key={item.title} data-reveal data-reveal-delay={String(index % 3)}>
+                <span className="insightIndex" aria-hidden="true">
+                  {String(index + 1).padStart(2, "0")}
+                </span>
+                <h3>{item.title}</h3>
+                <p>{item.description}</p>
+              </article>
+            ))}
+          </div>
+
+          <blockquote className="insightsQuote" data-reveal>
+            <p>
+              “Mijn kracht ligt niet in iemand onder druk zetten, maar in vertrouwen creëren,
+              mogelijkheden zichtbaar maken en iemand helpen een keuze te maken die echt goed voelt.”
+            </p>
+          </blockquote>
+          <p className="insightsSource">Deze beschrijving is gebaseerd op mijn persoonlijke DISC-profiel.</p>
+        </section>
+        </SectionAccordion>
+
+        <SectionAccordion
+          id="talenten"
+          label="Talenten"
+          description="Wat mij motiveert en waar mijn natuurlijke kracht ligt"
+          tone="soft"
+        >
+        <section className="insightsSection insightsSection--soft" aria-labelledby="talents-title">
+          <div className="insightsHeading" data-reveal>
+            <p className="eyebrow">Mijn JANE-profiel</p>
+            <h2 id="talents-title">Kansen zien, waarde zichtbaar maken en kwaliteit vasthouden.</h2>
+            <div className="insightsIntro">
+              <p>
+                Mijn JANE Talentenrapportage laat een combinatie zien van commercieel inzicht,
+                gevoel voor presentatie en een consequente manier van werken. Ik zie mogelijkheden,
+                maak de waarde van mensen en producten aantrekkelijk zichtbaar en vind het belangrijk
+                om kwaliteit vast te houden.
+              </p>
+              <p>
+                Daarnaast sta ik open voor nieuwe ideeën en kan ik een brede of onduidelijke wens
+                vertalen naar duidelijke, uitvoerbare keuzes.
+              </p>
+              <p>
+                Mijn hoogst scorende JANE-talenten zijn Routinetalent, Exploitatietalent en
+                Etaleertalent, alle drie met 80%. Vertaaltalent en Scopetalent volgen met 70%.
+              </p>
+            </div>
+          </div>
+
+          <div className="insightsGrid insightsGrid--talents">
+            {janeTalents.map((item, index) => (
+              <article key={item.title} data-reveal data-reveal-delay={String(index % 3)}>
+                <span className="insightIndex" aria-hidden="true">
+                  {String(index + 1).padStart(2, "0")}
+                </span>
+                <h3>{item.title}</h3>
+                <p>{item.description}</p>
+                <small>{item.basis}</small>
+              </article>
+            ))}
+          </div>
+
+          <p className="insightsSource">
+            Deze beschrijving is gebaseerd op mijn JANE Talentenrapportage. De volledige rapportage
+            is op verzoek beschikbaar.
+          </p>
+        </section>
+        </SectionAccordion>
+
+        <SectionAccordion
           id="ambitie"
           label="Ambitie"
           description="Gewenste functie en ontwikkeling"
@@ -508,41 +649,10 @@ export default function Home() {
         </SectionAccordion>
 
         <SectionAccordion
-          id="talenten"
-          label="Talenten"
-          description="Drie krachtlijnen uit de Jane Talentenrapportage"
-          tone="light"
-        >
-        <section className="quotesSection" aria-labelledby="quotes-title">
-          <div className="quotesHeading" data-reveal>
-            <p className="eyebrow">Professioneel profiel</p>
-            <h2 id="quotes-title">Wat haar werk typeert.</h2>
-            <p>
-              Drie krachtlijnen uit de Jane Talentenrapportage. Jane® is een
-              geregistreerd advies- en trainingsproduct dat motivatiepatronen en potentiële
-              vaardigheden in kaart brengt.
-            </p>
-          </div>
-          <div className="quoteGrid">
-            {talentQuotes.map((item, index) => (
-              <article key={item.talent} data-reveal data-reveal-delay={String(index)}>
-                <span className="talentIndex" aria-hidden="true">{String(index + 1).padStart(2, "0")}</span>
-                <p>{item.quote}</p>
-                <footer>
-                  <strong>{item.talent}</strong>
-                  <small>Jane Talentenrapportage</small>
-                </footer>
-              </article>
-            ))}
-          </div>
-        </section>
-        </SectionAccordion>
-
-        <SectionAccordion
           id="portfolio"
           label="Portfolio"
           description="Vier verzorgde beautylooks"
-          tone="soft"
+          tone="light"
         >
         <section className="portfolioSection" aria-labelledby="portfolio-title">
           <div className="editorialHeading" data-reveal>
@@ -608,7 +718,7 @@ export default function Home() {
           id="opleiding"
           label="Opleiding"
           description="Trainingen, certificaten en creatieve basis"
-          tone="light"
+          tone="soft"
         >
         <section className="educationSection" aria-labelledby="education-title">
           <div className="educationHeading" data-reveal>
@@ -630,29 +740,6 @@ export default function Home() {
                 <p>{item.detail}</p>
               </article>
             ))}
-          </div>
-        </section>
-        </SectionAccordion>
-
-        <SectionAccordion
-          id="connect"
-          label="Connect"
-          description="LinkedIn en professioneel profiel"
-          tone="soft"
-        >
-        <section className="socialSection" aria-labelledby="social-title">
-          <div data-reveal>
-            <p className="eyebrow">Connect</p>
-            <h2 id="social-title">Volg de volgende stap.</h2>
-          </div>
-          <div className="socialLinks" data-reveal data-reveal-delay="1">
-            <a
-              href="https://nl.linkedin.com/in/ilona-frederiks-666b63353"
-              target="_blank"
-              rel="noreferrer"
-            >
-              <span>LinkedIn</span><strong>Professioneel profiel</strong><ArrowIcon />
-            </a>
           </div>
         </section>
         </SectionAccordion>

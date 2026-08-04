@@ -5,9 +5,9 @@ import { useEffect, useRef, useState } from "react";
 const menuItems = [
   { href: "#profieltekst", label: "Profiel" },
   { href: "#ervaring", label: "Ervaring" },
-  { href: "#beschikbaarheid", label: "Beschikbaarheid" },
-  { href: "#portfolio", label: "Portfolio" },
+  { href: "#communicatiestijl", label: "Communicatie" },
   { href: "#talenten", label: "Talenten" },
+  { href: "#portfolio", label: "Portfolio" },
   { href: "#contact", label: "Contact" },
 ];
 
